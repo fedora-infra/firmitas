@@ -3,7 +3,7 @@ Variables related to notifications
 """
 
 # The source code forge on which the issue tickets need to be created
-gitforge = ""
+gitforge = "pagure"
 
 # The location of the aforementioned repository
 repoloca = ""
@@ -17,12 +17,24 @@ username = ""
 # The API key for the source code forge pertaining to the user
 password = ""
 
+# Number of days from validity expiry to make the notification for
+daysqant = 30
+
+# List of labels to tag the notification tickets with
+tagslist = ["firmitas", "automate", "notifier"]
+
+# Maximum number of retries to opening the notification ticket
+maxretry = 5
+
 """
 Variables related to probing
 """
 
 # The location of the X.509 standard TLS certificates
 certloca = "/var/tmp/firmitas"
+
+# The location of the service hostnames and maintainers map
+hostloca = "/var/tmp/certlist.yml"
 
 """
 Variables related to logging
@@ -56,4 +68,4 @@ logrconf = {
 Variables used for computing
 """
 
-pathdict = {}
+certdict = {}
