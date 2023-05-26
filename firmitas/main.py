@@ -1,7 +1,7 @@
 import click
 
 from firmitas import __vers__, readconf
-from firmitas.base.maintool import probedir, readcert
+from firmitas.base.maintool import gonotify, probedir
 
 
 @click.command(name="firmitas")
@@ -20,5 +20,5 @@ def main(conffile=None):
         with open(conffile, "r") as confobjc:
             exec(compile(confobjc.read(), conffile, "exec"), confdict)
         readconf(confdict)
-        probedir()
-        readcert()
+    probedir()
+    gonotify()
