@@ -25,7 +25,7 @@ Simple notification service for X.509-standard TLS certificate statuses
 
 %install
 %pyproject_install
-%pyproject_save_files nvautoinstall
+%pyproject_save_files %{name}
 
 %files -f %{pyproject_files}
 %doc README.md
