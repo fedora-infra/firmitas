@@ -1,5 +1,5 @@
 Name:           firmitas
-Version:        0.1.0
+Version:        0.1.1
 Release:        1%{?dist}
 Summary:        Simple notification service for X.509-standard TLS certificate statuses
 
@@ -34,6 +34,11 @@ Simple notification service for X.509-standard TLS certificate statuses
 %{_bindir}/%{name}
 
 %changelog
+
+* Thu Jun 01 2023 Akashdeep Dhar <t0xic0der@fedoraproject.org> - 0.1.1-1
+- v0.1.1 - Released on June 01st, 2023
+- Stepped down dependency version requirements for EPEL9 compatibility
+- Rework the RPM specfile to include support for EPEL9 release
 
 * Thu Jun 01 2023 Akashdeep Dhar <t0xic0der@fedoraproject.org> - 0.1.0-1
 - v0.1.0 - Released on June 01st, 2023
