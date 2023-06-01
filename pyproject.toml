@@ -9,7 +9,7 @@ readme = "README.md"
 homepage = "https://gitlab.com/t0xic0der/firmitas/"
 repository = "https://gitlab.com/t0xic0der/firmitas/"
 documentation = "https://gitlab.com/t0xic0der/firmitas/-/blob/main/README.md"
-keywords = []
+keywords = ["notification", "security", "certificate"]
 classifiers= [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
