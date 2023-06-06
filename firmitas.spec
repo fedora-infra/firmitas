@@ -38,15 +38,13 @@ Simple notification service for X.509-standard TLS certificate statuses
 %changelog
 
 * Tue Jun 06 2023 Onuralp SEZER <thunderbirdtr@fedoraproject.org> - 0.1.1-2
-- cosmetic rpm-spec file changes
+- Cosmetic RPM specfile changes
 
 * Thu Jun 01 2023 Akashdeep Dhar <t0xic0der@fedoraproject.org> - 0.1.1-1
-- v0.1.1 - Released on June 01st, 2023
 - Stepped down dependency version requirements for EPEL9 compatibility
 - Rework the RPM specfile to include support for EPEL9 release
 
 * Thu Jun 01 2023 Akashdeep Dhar <t0xic0der@fedoraproject.org> - 0.1.0-1
-- v0.1.0 - Released on June 01st, 2023
 - Added notification support for ticketing repositories on Pagure
 - Added checking for the validity of X.509-standard TLS certificates
 - Introduced configuration mapping for the notification service
