@@ -1,13 +1,11 @@
-%global pypi_name firmitas
-
-Name:           %{pypi_name}
+Name:           firmitas
 Version:        0.1.1
 Release:        2%{?dist}
 Summary:        Simple notification service for X.509-standard TLS certificate statuses
 
 License:        GPLv3+
-Url:            https://gitlab.com/t0xic0der/%{pypi_name}
-Source0:        %{pypi_source}
+Url:            https://gitlab.com/t0xic0der/firmitas
+Source0:        %{pypi_source firmitas}
 
 BuildArch:      noarch
 
@@ -18,7 +16,7 @@ BuildRequires:  pyproject-rpm-macros
 Simple notification service for X.509-standard TLS certificate statuses
 
 %prep
-%autosetup -p1 -n %{pypi_name}-%{version}
+%autosetup -p 1
 
 %generate_buildrequires
 %pyproject_buildrequires
@@ -28,12 +26,12 @@ Simple notification service for X.509-standard TLS certificate statuses
 
 %install
 %pyproject_install
-%pyproject_save_files %{pypi_name}
+%pyproject_save_files firmitas
 
-%files -n %{pypi_name} -f %{pyproject_files}
+%files -f %{pyproject_files}
 %doc README.md
 %license LICENSE
-%{_bindir}/%{pypi_name}
+%{_bindir}/firmitas
 
 %changelog
 
