@@ -3,7 +3,7 @@ Version:        0.1.1
 Release:        2%{?dist}
 Summary:        Simple notification service for X.509-standard TLS certificate statuses
 
-License:        GPLv3+
+License:        GPL-3.0-or-later
 Url:            https://gitlab.com/t0xic0der/firmitas
 Source0:        %{pypi_source firmitas}
 
