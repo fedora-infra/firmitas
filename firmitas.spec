@@ -10,7 +10,6 @@ Source0:        %{pypi_source firmitas}
 BuildArch:      noarch
 
 BuildRequires:  python3-devel
-BuildRequires:  pyproject-rpm-macros
 
 %description
 Simple notification service for X.509-standard TLS certificate statuses
