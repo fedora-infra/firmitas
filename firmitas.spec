@@ -1,6 +1,6 @@
 Name:           firmitas
-Version:        0.1.1
-Release:        2%{?dist}
+Version:        0.1.2
+Release:        1%{?dist}
 Summary:        Simple notification service for X.509-standard TLS certificate statuses
 
 License:        GPL-3.0-or-later
@@ -33,6 +33,15 @@ Simple notification service for X.509-standard TLS certificate statuses
 %{_bindir}/firmitas
 
 %changelog
+
+* Thu Jun 08 2023 Akashdeep Dhar <t0xic0der@fedoraproject.org> - 0.1.2-1
+- Made cosmetic changes to the RPM spec file
+- Removed the version information from the changelog section of the RPM spec file
+- Removed unnecessary macros from the RPM spec file
+- Removed "pyproject-rpm-macros" from the build requirements section
+- Switched license tag over to an SPDX identifier
+- Raised the upper bound on "cryptography" runtime dependency
+- Updated the dependency lockfile to the most recent versions
 
 * Tue Jun 06 2023 Onuralp SEZER <thunderbirdtr@fedoraproject.org> - 0.1.1-2
 - Cosmetic RPM specfile changes
