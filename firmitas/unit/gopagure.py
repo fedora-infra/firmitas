@@ -39,6 +39,7 @@ def makenote(
                 "tag": ",".join(standard.tagslist),
                 "assignee": assignee,
             },
+            timeout=standard.rqsttime,
         )
         logrdata.logrobjc.debug(
             f"[{servname}] The notification request was met with response code "

@@ -2,6 +2,9 @@
 Variables related to notifications
 """
 
+# The limit for how long a single request must be attempted for
+rqsttime = 30
+
 # The source code forge on which the issue tickets need to be created
 gitforge = "pagure"
 
@@ -31,10 +34,10 @@ Variables related to probing
 """
 
 # The location of the X.509 standard TLS certificates
-certloca = "/var/tmp/firmitas/certhere"
+certloca = "/var/tmp/firmitas/certhere"  # noqa : S108
 
 # The location of the service hostnames and maintainers map
-hostloca = "/var/tmp/firmitas/certlist.yml"
+hostloca = "/var/tmp/firmitas/certlist.yml"  # noqa: S108
 
 """
 Variables related to logging
