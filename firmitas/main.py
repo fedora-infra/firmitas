@@ -17,8 +17,8 @@ from firmitas.base.maintool import gonotify, probedir
 def main(conffile=None):
     if conffile:
         confdict = {}
-        with open(conffile, "r") as confobjc:
-            exec(compile(confobjc.read(), conffile, "exec"), confdict)
+        with open(conffile) as confobjc:
+            exec(compile(confobjc.read(), conffile, "exec"), confdict)  # noqa : S102
         readconf(confdict)
     probedir()
     gonotify()
