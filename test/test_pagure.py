@@ -21,13 +21,12 @@ be used or replicated with the express permission of Red Hat, Inc.
 """
 
 
-import logging
+from unittest.mock import Mock
 
-logging.basicConfig(
-    format="[FMTS] %(asctime)s [%(levelname)s] %(message)s",
-    datefmt="[%Y-%m-%d %I:%M:%S %z]",
-    level=logging.INFO,
-)
+from firmitas.unit import gopagure
 
 
-logrobjc = logging.getLogger(__name__)
+def test_pagure():
+    gopagure.post = Mock()
+    gopagure.post.side_effect = Exception()
+    assert (False, "", "") == gopagure.makenote(0, "", "", "", 0, 0, "", "", "", "")  # noqa : S101

@@ -21,13 +21,12 @@ be used or replicated with the express permission of Red Hat, Inc.
 """
 
 
-import logging
-
-logging.basicConfig(
-    format="[FMTS] %(asctime)s [%(levelname)s] %(message)s",
-    datefmt="[%Y-%m-%d %I:%M:%S %z]",
-    level=logging.INFO,
-)
+def wipe_cookies():
+    def before_record_response(response):
+        response["headers"]["Set-Cookie"] = ""
+        return response
+    return before_record_response
 
 
-logrobjc = logging.getLogger(__name__)
+def pytest_recording_configure(config, vcr):
+    vcr.before_record_response = wipe_cookies()

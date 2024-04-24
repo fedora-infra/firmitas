@@ -1,0 +1,974 @@
+interactions:
+- request:
+    body: title=%5BFMTS%5D+TLS+certificate+for+joystick.stg+service+is+about+to+expire+in+2000+days&issue_content=%0AThis+is+to+inform+that+the+TLS+certificate+for+%2A%2Ajoystick.stg%2A%2A+service+will+expire+in+about+%2A%2A2000+day%28s%29%2A%2A+from+now+on+%2A%2A2029-05-25+23%3A04%3A35+UTC%2A%2A.+The+following+are+information+relevant+to+the+associated+TLS+certificate.%0A%0A-+%2A%2AService+name%2A%2A+-+%2A%2Ajoystick.stg%2A%2A+%28Certificate+stored+as+%2A%2Ajoystick.stg.crt%2A%2A%29%0A-+%2A%2AIssuing+authority%2A%2A+-+RabbitMQ+STAGING+CA+%28%2A%2A%2344541479035547978831580614561088909678%2A%2A%29%0A-+%2A%2AValidity+starting%2A%2A+-+%2A%2A2019-05-28+23%3A04%3A35+UTC%2A%2A+%28%2A%2A1793+day%28s%29%2A%2A+passed+since+beginning%29%0A-+%2A%2AValidity+ending%2A%2A+-+%2A%2A2029-05-25+23%3A04%3A35+UTC%2A%2A+%28%2A%2A1857+day%28s%29%2A%2A+left+before+expiring%29%0A%0AThe+point+of+contact+for+the+service+have+been+tagged+into+this+ticket+and+notified+about+the+same.+It+is+strongly+recommended+to+promptly+renew+the+TLS+certificate+for+the+service+before+the+existing+one+expires.%0A%0A_This+issue+ticket+was+automatically+created+by+the+%5B%2A%2AFirmitas+notification+service%2A%2A%5D%28https%3A%2F%2Fgitlab.com%2Ft0xic0der%2Ffirmitas%29.+Please+contact+%5B%2A%2AFedora+Infrastructure%2A%2A%5D%28https%3A%2F%2Fpagure.io%2Ffedora-infrastructure%2Fissues%29+team+if+you+believe+that+this+notification+is+mistaken._%0A&tag=firmitas%2Cautomate%2Cnotifier&assignee=t0xic0der
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1465'
+      Content-Type:
+      - application/x-www-form-urlencoded
+      User-Agent:
+      - python-requests/2.31.0
+    method: POST
+    uri: https://pagure.io/api/0/firmitas-notifier/new_issue
+  response:
+    body:
+      string: "{\n  \"issue\": {\n    \"assignee\": {\n      \"full_url\": \"https://pagure.io/user/t0xic0der\",
+        \n      \"fullname\": \"Akashdeep Dhar\", \n      \"name\": \"t0xic0der\",
+        \n      \"url_path\": \"user/t0xic0der\"\n    }, \n    \"blocks\": [], \n
+        \   \"close_status\": null, \n    \"closed_at\": null, \n    \"closed_by\":
+        null, \n    \"comments\": [], \n    \"content\": \"\\nThis is to inform that
+        the TLS certificate for **joystick.stg** service will expire in about **2000
+        day(s)** from now on **2029-05-25 23:04:35 UTC**. The following are information
+        relevant to the associated TLS certificate.\\n\\n- **Service name** - **joystick.stg**
+        (Certificate stored as **joystick.stg.crt**)\\n- **Issuing authority** - RabbitMQ
+        STAGING CA (**#44541479035547978831580614561088909678**)\\n- **Validity starting**
+        - **2019-05-28 23:04:35 UTC** (**1793 day(s)** passed since beginning)\\n-
+        **Validity ending** - **2029-05-25 23:04:35 UTC** (**1857 day(s)** left before
+        expiring)\\n\\nThe point of contact for the service have been tagged into
+        this ticket and notified about the same. It is strongly recommended to promptly
+        renew the TLS certificate for the service before the existing one expires.\\n\\n_This
+        issue ticket was automatically created by the [**Firmitas notification service**](https://gitlab.com/t0xic0der/firmitas).
+        Please contact [**Fedora Infrastructure**](https://pagure.io/fedora-infrastructure/issues)
+        team if you believe that this notification is mistaken._\\n\", \n    \"custom_fields\":
+        [], \n    \"date_created\": \"1713928981\", \n    \"depends\": [], \n    \"full_url\":
+        \"https://pagure.io/firmitas-notifier/issue/113\", \n    \"id\": 113, \n    \"last_updated\":
+        \"1713928981\", \n    \"milestone\": null, \n    \"priority\": null, \n    \"private\":
+        false, \n    \"related_prs\": [], \n    \"status\": \"Open\", \n    \"tags\":
+        [\n      \"automate\", \n      \"firmitas\", \n      \"notifier\"\n    ],
+        \n    \"title\": \"[FMTS] TLS certificate for joystick.stg service is about
+        to expire in 2000 days\", \n    \"user\": {\n      \"full_url\": \"https://pagure.io/user/t0xic0der\",
+        \n      \"fullname\": \"Akashdeep Dhar\", \n      \"name\": \"t0xic0der\",
+        \n      \"url_path\": \"user/t0xic0der\"\n    }\n  }, \n  \"message\": \"Issue
+        created\"\n}\n"
+    headers:
+      Connection:
+      - Upgrade, Keep-Alive
+      Content-Length:
+      - '2122'
+      Content-Security-Policy:
+      - default-src 'self';script-src 'self' 'nonce-DFTQ0B3LVyTf2qbQ8Op72SmAC'; style-src
+        'self' 'nonce-DFTQ0B3LVyTf2qbQ8Op72SmAC'; object-src 'none';base-uri 'self';img-src
+        'self' https:;connect-src 'self' https://pagure.io:8088;frame-src https://docs.pagure.org;frame-ancestors
+        https://pagure.io;
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 24 Apr 2024 03:23:01 GMT
+      Keep-Alive:
+      - timeout=5, max=100
+      Referrer-Policy:
+      - same-origin
+      Server:
+      - Apache/2.4.37 (Red Hat Enterprise Linux) OpenSSL/1.1.1k mod_wsgi/4.6.4 Python/3.6
+      Set-Cookie: ''
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Upgrade:
+      - h2,h2c
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - ALLOW-FROM https://pagure.io/
+      X-Xss-Protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+- request:
+    body: title=%5BFMTS%5D+TLS+certificate+for+nuancier.stg+service+is+about+to+expire+in+2000+days&issue_content=%0AThis+is+to+inform+that+the+TLS+certificate+for+%2A%2Anuancier.stg%2A%2A+service+will+expire+in+about+%2A%2A2000+day%28s%29%2A%2A+from+now+on+%2A%2A2029-02-18+18%3A34%3A13+UTC%2A%2A.+The+following+are+information+relevant+to+the+associated+TLS+certificate.%0A%0A-+%2A%2AService+name%2A%2A+-+%2A%2Anuancier.stg%2A%2A+%28Certificate+stored+as+%2A%2Anuancier.stg.crt%2A%2A%29%0A-+%2A%2AIssuing+authority%2A%2A+-+RabbitMQ+STAGING+CA+%28%2A%2A%23209068775949833699801370873051828148798%2A%2A%29%0A-+%2A%2AValidity+starting%2A%2A+-+%2A%2A2019-02-21+18%3A34%3A13+UTC%2A%2A+%28%2A%2A1889+day%28s%29%2A%2A+passed+since+beginning%29%0A-+%2A%2AValidity+ending%2A%2A+-+%2A%2A2029-02-18+18%3A34%3A13+UTC%2A%2A+%28%2A%2A1761+day%28s%29%2A%2A+left+before+expiring%29%0A%0AThe+point+of+contact+for+the+service+have+been+tagged+into+this+ticket+and+notified+about+the+same.+It+is+strongly+recommended+to+promptly+renew+the+TLS+certificate+for+the+service+before+the+existing+one+expires.%0A%0A_This+issue+ticket+was+automatically+created+by+the+%5B%2A%2AFirmitas+notification+service%2A%2A%5D%28https%3A%2F%2Fgitlab.com%2Ft0xic0der%2Ffirmitas%29.+Please+contact+%5B%2A%2AFedora+Infrastructure%2A%2A%5D%28https%3A%2F%2Fpagure.io%2Ffedora-infrastructure%2Fissues%29+team+if+you+believe+that+this+notification+is+mistaken._%0A&tag=firmitas%2Cautomate%2Cnotifier&assignee=t0xic0der
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1466'
+      Content-Type:
+      - application/x-www-form-urlencoded
+      User-Agent:
+      - python-requests/2.31.0
+    method: POST
+    uri: https://pagure.io/api/0/firmitas-notifier/new_issue
+  response:
+    body:
+      string: "{\n  \"issue\": {\n    \"assignee\": {\n      \"full_url\": \"https://pagure.io/user/t0xic0der\",
+        \n      \"fullname\": \"Akashdeep Dhar\", \n      \"name\": \"t0xic0der\",
+        \n      \"url_path\": \"user/t0xic0der\"\n    }, \n    \"blocks\": [], \n
+        \   \"close_status\": null, \n    \"closed_at\": null, \n    \"closed_by\":
+        null, \n    \"comments\": [], \n    \"content\": \"\\nThis is to inform that
+        the TLS certificate for **nuancier.stg** service will expire in about **2000
+        day(s)** from now on **2029-02-18 18:34:13 UTC**. The following are information
+        relevant to the associated TLS certificate.\\n\\n- **Service name** - **nuancier.stg**
+        (Certificate stored as **nuancier.stg.crt**)\\n- **Issuing authority** - RabbitMQ
+        STAGING CA (**#209068775949833699801370873051828148798**)\\n- **Validity starting**
+        - **2019-02-21 18:34:13 UTC** (**1889 day(s)** passed since beginning)\\n-
+        **Validity ending** - **2029-02-18 18:34:13 UTC** (**1761 day(s)** left before
+        expiring)\\n\\nThe point of contact for the service have been tagged into
+        this ticket and notified about the same. It is strongly recommended to promptly
+        renew the TLS certificate for the service before the existing one expires.\\n\\n_This
+        issue ticket was automatically created by the [**Firmitas notification service**](https://gitlab.com/t0xic0der/firmitas).
+        Please contact [**Fedora Infrastructure**](https://pagure.io/fedora-infrastructure/issues)
+        team if you believe that this notification is mistaken._\\n\", \n    \"custom_fields\":
+        [], \n    \"date_created\": \"1713928984\", \n    \"depends\": [], \n    \"full_url\":
+        \"https://pagure.io/firmitas-notifier/issue/114\", \n    \"id\": 114, \n    \"last_updated\":
+        \"1713928984\", \n    \"milestone\": null, \n    \"priority\": null, \n    \"private\":
+        false, \n    \"related_prs\": [], \n    \"status\": \"Open\", \n    \"tags\":
+        [\n      \"automate\", \n      \"firmitas\", \n      \"notifier\"\n    ],
+        \n    \"title\": \"[FMTS] TLS certificate for nuancier.stg service is about
+        to expire in 2000 days\", \n    \"user\": {\n      \"full_url\": \"https://pagure.io/user/t0xic0der\",
+        \n      \"fullname\": \"Akashdeep Dhar\", \n      \"name\": \"t0xic0der\",
+        \n      \"url_path\": \"user/t0xic0der\"\n    }\n  }, \n  \"message\": \"Issue
+        created\"\n}\n"
+    headers:
+      Connection:
+      - Upgrade, Keep-Alive
+      Content-Length:
+      - '2123'
+      Content-Security-Policy:
+      - default-src 'self';script-src 'self' 'nonce-alExEORAVsobkMuWDlIO9SLFP'; style-src
+        'self' 'nonce-alExEORAVsobkMuWDlIO9SLFP'; object-src 'none';base-uri 'self';img-src
+        'self' https:;connect-src 'self' https://pagure.io:8088;frame-src https://docs.pagure.org;frame-ancestors
+        https://pagure.io;
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 24 Apr 2024 03:23:04 GMT
+      Keep-Alive:
+      - timeout=5, max=100
+      Referrer-Policy:
+      - same-origin
+      Server:
+      - Apache/2.4.37 (Red Hat Enterprise Linux) OpenSSL/1.1.1k mod_wsgi/4.6.4 Python/3.6
+      Set-Cookie: ''
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Upgrade:
+      - h2,h2c
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - ALLOW-FROM https://pagure.io/
+      X-Xss-Protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+- request:
+    body: title=%5BFMTS%5D+TLS+certificate+for+robosign.stg+service+is+about+to+expire+in+2000+days&issue_content=%0AThis+is+to+inform+that+the+TLS+certificate+for+%2A%2Arobosign.stg%2A%2A+service+will+expire+in+about+%2A%2A2000+day%28s%29%2A%2A+from+now+on+%2A%2A2029-09-17+22%3A29%3A56+UTC%2A%2A.+The+following+are+information+relevant+to+the+associated+TLS+certificate.%0A%0A-+%2A%2AService+name%2A%2A+-+%2A%2Arobosign.stg%2A%2A+%28Certificate+stored+as+%2A%2Arobosign.stg.crt%2A%2A%29%0A-+%2A%2AIssuing+authority%2A%2A+-+RabbitMQ+STAGING+CA+%28%2A%2A%2338988970076690016170053187069021997563%2A%2A%29%0A-+%2A%2AValidity+starting%2A%2A+-+%2A%2A2019-09-20+22%3A29%3A56+UTC%2A%2A+%28%2A%2A1678+day%28s%29%2A%2A+passed+since+beginning%29%0A-+%2A%2AValidity+ending%2A%2A+-+%2A%2A2029-09-17+22%3A29%3A56+UTC%2A%2A+%28%2A%2A1972+day%28s%29%2A%2A+left+before+expiring%29%0A%0AThe+point+of+contact+for+the+service+have+been+tagged+into+this+ticket+and+notified+about+the+same.+It+is+strongly+recommended+to+promptly+renew+the+TLS+certificate+for+the+service+before+the+existing+one+expires.%0A%0A_This+issue+ticket+was+automatically+created+by+the+%5B%2A%2AFirmitas+notification+service%2A%2A%5D%28https%3A%2F%2Fgitlab.com%2Ft0xic0der%2Ffirmitas%29.+Please+contact+%5B%2A%2AFedora+Infrastructure%2A%2A%5D%28https%3A%2F%2Fpagure.io%2Ffedora-infrastructure%2Fissues%29+team+if+you+believe+that+this+notification+is+mistaken._%0A&tag=firmitas%2Cautomate%2Cnotifier&assignee=t0xic0der
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1465'
+      Content-Type:
+      - application/x-www-form-urlencoded
+      User-Agent:
+      - python-requests/2.31.0
+    method: POST
+    uri: https://pagure.io/api/0/firmitas-notifier/new_issue
+  response:
+    body:
+      string: "{\n  \"issue\": {\n    \"assignee\": {\n      \"full_url\": \"https://pagure.io/user/t0xic0der\",
+        \n      \"fullname\": \"Akashdeep Dhar\", \n      \"name\": \"t0xic0der\",
+        \n      \"url_path\": \"user/t0xic0der\"\n    }, \n    \"blocks\": [], \n
+        \   \"close_status\": null, \n    \"closed_at\": null, \n    \"closed_by\":
+        null, \n    \"comments\": [], \n    \"content\": \"\\nThis is to inform that
+        the TLS certificate for **robosign.stg** service will expire in about **2000
+        day(s)** from now on **2029-09-17 22:29:56 UTC**. The following are information
+        relevant to the associated TLS certificate.\\n\\n- **Service name** - **robosign.stg**
+        (Certificate stored as **robosign.stg.crt**)\\n- **Issuing authority** - RabbitMQ
+        STAGING CA (**#38988970076690016170053187069021997563**)\\n- **Validity starting**
+        - **2019-09-20 22:29:56 UTC** (**1678 day(s)** passed since beginning)\\n-
+        **Validity ending** - **2029-09-17 22:29:56 UTC** (**1972 day(s)** left before
+        expiring)\\n\\nThe point of contact for the service have been tagged into
+        this ticket and notified about the same. It is strongly recommended to promptly
+        renew the TLS certificate for the service before the existing one expires.\\n\\n_This
+        issue ticket was automatically created by the [**Firmitas notification service**](https://gitlab.com/t0xic0der/firmitas).
+        Please contact [**Fedora Infrastructure**](https://pagure.io/fedora-infrastructure/issues)
+        team if you believe that this notification is mistaken._\\n\", \n    \"custom_fields\":
+        [], \n    \"date_created\": \"1713928987\", \n    \"depends\": [], \n    \"full_url\":
+        \"https://pagure.io/firmitas-notifier/issue/115\", \n    \"id\": 115, \n    \"last_updated\":
+        \"1713928987\", \n    \"milestone\": null, \n    \"priority\": null, \n    \"private\":
+        false, \n    \"related_prs\": [], \n    \"status\": \"Open\", \n    \"tags\":
+        [\n      \"automate\", \n      \"firmitas\", \n      \"notifier\"\n    ],
+        \n    \"title\": \"[FMTS] TLS certificate for robosign.stg service is about
+        to expire in 2000 days\", \n    \"user\": {\n      \"full_url\": \"https://pagure.io/user/t0xic0der\",
+        \n      \"fullname\": \"Akashdeep Dhar\", \n      \"name\": \"t0xic0der\",
+        \n      \"url_path\": \"user/t0xic0der\"\n    }\n  }, \n  \"message\": \"Issue
+        created\"\n}\n"
+    headers:
+      Connection:
+      - Upgrade, Keep-Alive
+      Content-Length:
+      - '2122'
+      Content-Security-Policy:
+      - default-src 'self';script-src 'self' 'nonce-1cfTyvyviGzbtcUHy7gypmerM'; style-src
+        'self' 'nonce-1cfTyvyviGzbtcUHy7gypmerM'; object-src 'none';base-uri 'self';img-src
+        'self' https:;connect-src 'self' https://pagure.io:8088;frame-src https://docs.pagure.org;frame-ancestors
+        https://pagure.io;
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 24 Apr 2024 03:23:07 GMT
+      Keep-Alive:
+      - timeout=5, max=100
+      Referrer-Policy:
+      - same-origin
+      Server:
+      - Apache/2.4.37 (Red Hat Enterprise Linux) OpenSSL/1.1.1k mod_wsgi/4.6.4 Python/3.6
+      Set-Cookie: ''
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Upgrade:
+      - h2,h2c
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - ALLOW-FROM https://pagure.io/
+      X-Xss-Protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+- request:
+    body: title=%5BFMTS%5D+TLS+certificate+for+waiverdb.stg+service+is+about+to+expire+in+2000+days&issue_content=%0AThis+is+to+inform+that+the+TLS+certificate+for+%2A%2Awaiverdb.stg%2A%2A+service+will+expire+in+about+%2A%2A2000+day%28s%29%2A%2A+from+now+on+%2A%2A2029-03-03+23%3A58%3A40+UTC%2A%2A.+The+following+are+information+relevant+to+the+associated+TLS+certificate.%0A%0A-+%2A%2AService+name%2A%2A+-+%2A%2Awaiverdb.stg%2A%2A+%28Certificate+stored+as+%2A%2Awaiverdb.stg.crt%2A%2A%29%0A-+%2A%2AIssuing+authority%2A%2A+-+RabbitMQ+STAGING+CA+%28%2A%2A%236931031601876762538483728070539648010%2A%2A%29%0A-+%2A%2AValidity+starting%2A%2A+-+%2A%2A2019-03-06+23%3A58%3A40+UTC%2A%2A+%28%2A%2A1876+day%28s%29%2A%2A+passed+since+beginning%29%0A-+%2A%2AValidity+ending%2A%2A+-+%2A%2A2029-03-03+23%3A58%3A40+UTC%2A%2A+%28%2A%2A1774+day%28s%29%2A%2A+left+before+expiring%29%0A%0AThe+point+of+contact+for+the+service+have+been+tagged+into+this+ticket+and+notified+about+the+same.+It+is+strongly+recommended+to+promptly+renew+the+TLS+certificate+for+the+service+before+the+existing+one+expires.%0A%0A_This+issue+ticket+was+automatically+created+by+the+%5B%2A%2AFirmitas+notification+service%2A%2A%5D%28https%3A%2F%2Fgitlab.com%2Ft0xic0der%2Ffirmitas%29.+Please+contact+%5B%2A%2AFedora+Infrastructure%2A%2A%5D%28https%3A%2F%2Fpagure.io%2Ffedora-infrastructure%2Fissues%29+team+if+you+believe+that+this+notification+is+mistaken._%0A&tag=firmitas%2Cautomate%2Cnotifier&assignee=t0xic0der
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1464'
+      Content-Type:
+      - application/x-www-form-urlencoded
+      User-Agent:
+      - python-requests/2.31.0
+    method: POST
+    uri: https://pagure.io/api/0/firmitas-notifier/new_issue
+  response:
+    body:
+      string: "{\n  \"issue\": {\n    \"assignee\": {\n      \"full_url\": \"https://pagure.io/user/t0xic0der\",
+        \n      \"fullname\": \"Akashdeep Dhar\", \n      \"name\": \"t0xic0der\",
+        \n      \"url_path\": \"user/t0xic0der\"\n    }, \n    \"blocks\": [], \n
+        \   \"close_status\": null, \n    \"closed_at\": null, \n    \"closed_by\":
+        null, \n    \"comments\": [], \n    \"content\": \"\\nThis is to inform that
+        the TLS certificate for **waiverdb.stg** service will expire in about **2000
+        day(s)** from now on **2029-03-03 23:58:40 UTC**. The following are information
+        relevant to the associated TLS certificate.\\n\\n- **Service name** - **waiverdb.stg**
+        (Certificate stored as **waiverdb.stg.crt**)\\n- **Issuing authority** - RabbitMQ
+        STAGING CA (**#6931031601876762538483728070539648010**)\\n- **Validity starting**
+        - **2019-03-06 23:58:40 UTC** (**1876 day(s)** passed since beginning)\\n-
+        **Validity ending** - **2029-03-03 23:58:40 UTC** (**1774 day(s)** left before
+        expiring)\\n\\nThe point of contact for the service have been tagged into
+        this ticket and notified about the same. It is strongly recommended to promptly
+        renew the TLS certificate for the service before the existing one expires.\\n\\n_This
+        issue ticket was automatically created by the [**Firmitas notification service**](https://gitlab.com/t0xic0der/firmitas).
+        Please contact [**Fedora Infrastructure**](https://pagure.io/fedora-infrastructure/issues)
+        team if you believe that this notification is mistaken._\\n\", \n    \"custom_fields\":
+        [], \n    \"date_created\": \"1713928989\", \n    \"depends\": [], \n    \"full_url\":
+        \"https://pagure.io/firmitas-notifier/issue/116\", \n    \"id\": 116, \n    \"last_updated\":
+        \"1713928989\", \n    \"milestone\": null, \n    \"priority\": null, \n    \"private\":
+        false, \n    \"related_prs\": [], \n    \"status\": \"Open\", \n    \"tags\":
+        [\n      \"automate\", \n      \"firmitas\", \n      \"notifier\"\n    ],
+        \n    \"title\": \"[FMTS] TLS certificate for waiverdb.stg service is about
+        to expire in 2000 days\", \n    \"user\": {\n      \"full_url\": \"https://pagure.io/user/t0xic0der\",
+        \n      \"fullname\": \"Akashdeep Dhar\", \n      \"name\": \"t0xic0der\",
+        \n      \"url_path\": \"user/t0xic0der\"\n    }\n  }, \n  \"message\": \"Issue
+        created\"\n}\n"
+    headers:
+      Connection:
+      - Upgrade, Keep-Alive
+      Content-Length:
+      - '2121'
+      Content-Security-Policy:
+      - default-src 'self';script-src 'self' 'nonce-lrdC72bNZcWLwPvmg3SkOGhC7'; style-src
+        'self' 'nonce-lrdC72bNZcWLwPvmg3SkOGhC7'; object-src 'none';base-uri 'self';img-src
+        'self' https:;connect-src 'self' https://pagure.io:8088;frame-src https://docs.pagure.org;frame-ancestors
+        https://pagure.io;
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 24 Apr 2024 03:23:09 GMT
+      Keep-Alive:
+      - timeout=5, max=100
+      Referrer-Policy:
+      - same-origin
+      Server:
+      - Apache/2.4.37 (Red Hat Enterprise Linux) OpenSSL/1.1.1k mod_wsgi/4.6.4 Python/3.6
+      Set-Cookie: ''
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Upgrade:
+      - h2,h2c
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - ALLOW-FROM https://pagure.io/
+      X-Xss-Protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+- request:
+    body: title=%5BFMTS%5D+TLS+certificate+for+joystick.stg+service+is+about+to+expire+in+2000+days&issue_content=%0AThis+is+to+inform+that+the+TLS+certificate+for+%2A%2Ajoystick.stg%2A%2A+service+will+expire+in+about+%2A%2A2000+day%28s%29%2A%2A+from+now+on+%2A%2A2029-05-25+23%3A04%3A35+UTC%2A%2A.+The+following+are+information+relevant+to+the+associated+TLS+certificate.%0A%0A-+%2A%2AService+name%2A%2A+-+%2A%2Ajoystick.stg%2A%2A+%28Certificate+stored+as+%2A%2Ajoystick.stg.crt%2A%2A%29%0A-+%2A%2AIssuing+authority%2A%2A+-+RabbitMQ+STAGING+CA+%28%2A%2A%2344541479035547978831580614561088909678%2A%2A%29%0A-+%2A%2AValidity+starting%2A%2A+-+%2A%2A2019-05-28+23%3A04%3A35+UTC%2A%2A+%28%2A%2A1793+day%28s%29%2A%2A+passed+since+beginning%29%0A-+%2A%2AValidity+ending%2A%2A+-+%2A%2A2029-05-25+23%3A04%3A35+UTC%2A%2A+%28%2A%2A1857+day%28s%29%2A%2A+left+before+expiring%29%0A%0AThe+point+of+contact+for+the+service+have+been+tagged+into+this+ticket+and+notified+about+the+same.+It+is+strongly+recommended+to+promptly+renew+the+TLS+certificate+for+the+service+before+the+existing+one+expires.%0A%0A_This+issue+ticket+was+automatically+created+by+the+%5B%2A%2AFirmitas+notification+service%2A%2A%5D%28https%3A%2F%2Fgitlab.com%2Ft0xic0der%2Ffirmitas%29.+Please+contact+%5B%2A%2AFedora+Infrastructure%2A%2A%5D%28https%3A%2F%2Fpagure.io%2Ffedora-infrastructure%2Fissues%29+team+if+you+believe+that+this+notification+is+mistaken._%0A&tag=firmitas%2Cautomate%2Cnotifier&assignee=t0xic0der
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1465'
+      Content-Type:
+      - application/x-www-form-urlencoded
+      User-Agent:
+      - python-requests/2.31.0
+    method: POST
+    uri: https://pagure.io/api/0/firmitas-notifier/new_issue
+  response:
+    body:
+      string: "{\n  \"issue\": {\n    \"assignee\": {\n      \"full_url\": \"https://pagure.io/user/t0xic0der\",
+        \n      \"fullname\": \"Akashdeep Dhar\", \n      \"name\": \"t0xic0der\",
+        \n      \"url_path\": \"user/t0xic0der\"\n    }, \n    \"blocks\": [], \n
+        \   \"close_status\": null, \n    \"closed_at\": null, \n    \"closed_by\":
+        null, \n    \"comments\": [], \n    \"content\": \"\\nThis is to inform that
+        the TLS certificate for **joystick.stg** service will expire in about **2000
+        day(s)** from now on **2029-05-25 23:04:35 UTC**. The following are information
+        relevant to the associated TLS certificate.\\n\\n- **Service name** - **joystick.stg**
+        (Certificate stored as **joystick.stg.crt**)\\n- **Issuing authority** - RabbitMQ
+        STAGING CA (**#44541479035547978831580614561088909678**)\\n- **Validity starting**
+        - **2019-05-28 23:04:35 UTC** (**1793 day(s)** passed since beginning)\\n-
+        **Validity ending** - **2029-05-25 23:04:35 UTC** (**1857 day(s)** left before
+        expiring)\\n\\nThe point of contact for the service have been tagged into
+        this ticket and notified about the same. It is strongly recommended to promptly
+        renew the TLS certificate for the service before the existing one expires.\\n\\n_This
+        issue ticket was automatically created by the [**Firmitas notification service**](https://gitlab.com/t0xic0der/firmitas).
+        Please contact [**Fedora Infrastructure**](https://pagure.io/fedora-infrastructure/issues)
+        team if you believe that this notification is mistaken._\\n\", \n    \"custom_fields\":
+        [], \n    \"date_created\": \"1713929199\", \n    \"depends\": [], \n    \"full_url\":
+        \"https://pagure.io/firmitas-notifier/issue/117\", \n    \"id\": 117, \n    \"last_updated\":
+        \"1713929199\", \n    \"milestone\": null, \n    \"priority\": null, \n    \"private\":
+        false, \n    \"related_prs\": [], \n    \"status\": \"Open\", \n    \"tags\":
+        [\n      \"automate\", \n      \"firmitas\", \n      \"notifier\"\n    ],
+        \n    \"title\": \"[FMTS] TLS certificate for joystick.stg service is about
+        to expire in 2000 days\", \n    \"user\": {\n      \"full_url\": \"https://pagure.io/user/t0xic0der\",
+        \n      \"fullname\": \"Akashdeep Dhar\", \n      \"name\": \"t0xic0der\",
+        \n      \"url_path\": \"user/t0xic0der\"\n    }\n  }, \n  \"message\": \"Issue
+        created\"\n}\n"
+    headers:
+      Connection:
+      - Upgrade, Keep-Alive
+      Content-Length:
+      - '2122'
+      Content-Security-Policy:
+      - default-src 'self';script-src 'self' 'nonce-nYcTRqOIR6tVBH8OkahUq4osu'; style-src
+        'self' 'nonce-nYcTRqOIR6tVBH8OkahUq4osu'; object-src 'none';base-uri 'self';img-src
+        'self' https:;connect-src 'self' https://pagure.io:8088;frame-src https://docs.pagure.org;frame-ancestors
+        https://pagure.io;
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 24 Apr 2024 03:26:38 GMT
+      Keep-Alive:
+      - timeout=5, max=100
+      Referrer-Policy:
+      - same-origin
+      Server:
+      - Apache/2.4.37 (Red Hat Enterprise Linux) OpenSSL/1.1.1k mod_wsgi/4.6.4 Python/3.6
+      Set-Cookie: ''
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Upgrade:
+      - h2,h2c
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - ALLOW-FROM https://pagure.io/
+      X-Xss-Protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+- request:
+    body: title=%5BFMTS%5D+TLS+certificate+for+nuancier.stg+service+is+about+to+expire+in+2000+days&issue_content=%0AThis+is+to+inform+that+the+TLS+certificate+for+%2A%2Anuancier.stg%2A%2A+service+will+expire+in+about+%2A%2A2000+day%28s%29%2A%2A+from+now+on+%2A%2A2029-02-18+18%3A34%3A13+UTC%2A%2A.+The+following+are+information+relevant+to+the+associated+TLS+certificate.%0A%0A-+%2A%2AService+name%2A%2A+-+%2A%2Anuancier.stg%2A%2A+%28Certificate+stored+as+%2A%2Anuancier.stg.crt%2A%2A%29%0A-+%2A%2AIssuing+authority%2A%2A+-+RabbitMQ+STAGING+CA+%28%2A%2A%23209068775949833699801370873051828148798%2A%2A%29%0A-+%2A%2AValidity+starting%2A%2A+-+%2A%2A2019-02-21+18%3A34%3A13+UTC%2A%2A+%28%2A%2A1889+day%28s%29%2A%2A+passed+since+beginning%29%0A-+%2A%2AValidity+ending%2A%2A+-+%2A%2A2029-02-18+18%3A34%3A13+UTC%2A%2A+%28%2A%2A1761+day%28s%29%2A%2A+left+before+expiring%29%0A%0AThe+point+of+contact+for+the+service+have+been+tagged+into+this+ticket+and+notified+about+the+same.+It+is+strongly+recommended+to+promptly+renew+the+TLS+certificate+for+the+service+before+the+existing+one+expires.%0A%0A_This+issue+ticket+was+automatically+created+by+the+%5B%2A%2AFirmitas+notification+service%2A%2A%5D%28https%3A%2F%2Fgitlab.com%2Ft0xic0der%2Ffirmitas%29.+Please+contact+%5B%2A%2AFedora+Infrastructure%2A%2A%5D%28https%3A%2F%2Fpagure.io%2Ffedora-infrastructure%2Fissues%29+team+if+you+believe+that+this+notification+is+mistaken._%0A&tag=firmitas%2Cautomate%2Cnotifier&assignee=t0xic0der
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1466'
+      Content-Type:
+      - application/x-www-form-urlencoded
+      User-Agent:
+      - python-requests/2.31.0
+    method: POST
+    uri: https://pagure.io/api/0/firmitas-notifier/new_issue
+  response:
+    body:
+      string: "{\n  \"issue\": {\n    \"assignee\": {\n      \"full_url\": \"https://pagure.io/user/t0xic0der\",
+        \n      \"fullname\": \"Akashdeep Dhar\", \n      \"name\": \"t0xic0der\",
+        \n      \"url_path\": \"user/t0xic0der\"\n    }, \n    \"blocks\": [], \n
+        \   \"close_status\": null, \n    \"closed_at\": null, \n    \"closed_by\":
+        null, \n    \"comments\": [], \n    \"content\": \"\\nThis is to inform that
+        the TLS certificate for **nuancier.stg** service will expire in about **2000
+        day(s)** from now on **2029-02-18 18:34:13 UTC**. The following are information
+        relevant to the associated TLS certificate.\\n\\n- **Service name** - **nuancier.stg**
+        (Certificate stored as **nuancier.stg.crt**)\\n- **Issuing authority** - RabbitMQ
+        STAGING CA (**#209068775949833699801370873051828148798**)\\n- **Validity starting**
+        - **2019-02-21 18:34:13 UTC** (**1889 day(s)** passed since beginning)\\n-
+        **Validity ending** - **2029-02-18 18:34:13 UTC** (**1761 day(s)** left before
+        expiring)\\n\\nThe point of contact for the service have been tagged into
+        this ticket and notified about the same. It is strongly recommended to promptly
+        renew the TLS certificate for the service before the existing one expires.\\n\\n_This
+        issue ticket was automatically created by the [**Firmitas notification service**](https://gitlab.com/t0xic0der/firmitas).
+        Please contact [**Fedora Infrastructure**](https://pagure.io/fedora-infrastructure/issues)
+        team if you believe that this notification is mistaken._\\n\", \n    \"custom_fields\":
+        [], \n    \"date_created\": \"1713929200\", \n    \"depends\": [], \n    \"full_url\":
+        \"https://pagure.io/firmitas-notifier/issue/118\", \n    \"id\": 118, \n    \"last_updated\":
+        \"1713929200\", \n    \"milestone\": null, \n    \"priority\": null, \n    \"private\":
+        false, \n    \"related_prs\": [], \n    \"status\": \"Open\", \n    \"tags\":
+        [\n      \"automate\", \n      \"firmitas\", \n      \"notifier\"\n    ],
+        \n    \"title\": \"[FMTS] TLS certificate for nuancier.stg service is about
+        to expire in 2000 days\", \n    \"user\": {\n      \"full_url\": \"https://pagure.io/user/t0xic0der\",
+        \n      \"fullname\": \"Akashdeep Dhar\", \n      \"name\": \"t0xic0der\",
+        \n      \"url_path\": \"user/t0xic0der\"\n    }\n  }, \n  \"message\": \"Issue
+        created\"\n}\n"
+    headers:
+      Connection:
+      - Upgrade, Keep-Alive
+      Content-Length:
+      - '2123'
+      Content-Security-Policy:
+      - default-src 'self';script-src 'self' 'nonce-ITzkrRU5dY0nQyZjr3C001eM3'; style-src
+        'self' 'nonce-ITzkrRU5dY0nQyZjr3C001eM3'; object-src 'none';base-uri 'self';img-src
+        'self' https:;connect-src 'self' https://pagure.io:8088;frame-src https://docs.pagure.org;frame-ancestors
+        https://pagure.io;
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 24 Apr 2024 03:26:40 GMT
+      Keep-Alive:
+      - timeout=5, max=100
+      Referrer-Policy:
+      - same-origin
+      Server:
+      - Apache/2.4.37 (Red Hat Enterprise Linux) OpenSSL/1.1.1k mod_wsgi/4.6.4 Python/3.6
+      Set-Cookie: ''
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Upgrade:
+      - h2,h2c
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - ALLOW-FROM https://pagure.io/
+      X-Xss-Protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+- request:
+    body: title=%5BFMTS%5D+TLS+certificate+for+robosign.stg+service+is+about+to+expire+in+2000+days&issue_content=%0AThis+is+to+inform+that+the+TLS+certificate+for+%2A%2Arobosign.stg%2A%2A+service+will+expire+in+about+%2A%2A2000+day%28s%29%2A%2A+from+now+on+%2A%2A2029-09-17+22%3A29%3A56+UTC%2A%2A.+The+following+are+information+relevant+to+the+associated+TLS+certificate.%0A%0A-+%2A%2AService+name%2A%2A+-+%2A%2Arobosign.stg%2A%2A+%28Certificate+stored+as+%2A%2Arobosign.stg.crt%2A%2A%29%0A-+%2A%2AIssuing+authority%2A%2A+-+RabbitMQ+STAGING+CA+%28%2A%2A%2338988970076690016170053187069021997563%2A%2A%29%0A-+%2A%2AValidity+starting%2A%2A+-+%2A%2A2019-09-20+22%3A29%3A56+UTC%2A%2A+%28%2A%2A1678+day%28s%29%2A%2A+passed+since+beginning%29%0A-+%2A%2AValidity+ending%2A%2A+-+%2A%2A2029-09-17+22%3A29%3A56+UTC%2A%2A+%28%2A%2A1972+day%28s%29%2A%2A+left+before+expiring%29%0A%0AThe+point+of+contact+for+the+service+have+been+tagged+into+this+ticket+and+notified+about+the+same.+It+is+strongly+recommended+to+promptly+renew+the+TLS+certificate+for+the+service+before+the+existing+one+expires.%0A%0A_This+issue+ticket+was+automatically+created+by+the+%5B%2A%2AFirmitas+notification+service%2A%2A%5D%28https%3A%2F%2Fgitlab.com%2Ft0xic0der%2Ffirmitas%29.+Please+contact+%5B%2A%2AFedora+Infrastructure%2A%2A%5D%28https%3A%2F%2Fpagure.io%2Ffedora-infrastructure%2Fissues%29+team+if+you+believe+that+this+notification+is+mistaken._%0A&tag=firmitas%2Cautomate%2Cnotifier&assignee=t0xic0der
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1465'
+      Content-Type:
+      - application/x-www-form-urlencoded
+      User-Agent:
+      - python-requests/2.31.0
+    method: POST
+    uri: https://pagure.io/api/0/firmitas-notifier/new_issue
+  response:
+    body:
+      string: "{\n  \"issue\": {\n    \"assignee\": {\n      \"full_url\": \"https://pagure.io/user/t0xic0der\",
+        \n      \"fullname\": \"Akashdeep Dhar\", \n      \"name\": \"t0xic0der\",
+        \n      \"url_path\": \"user/t0xic0der\"\n    }, \n    \"blocks\": [], \n
+        \   \"close_status\": null, \n    \"closed_at\": null, \n    \"closed_by\":
+        null, \n    \"comments\": [], \n    \"content\": \"\\nThis is to inform that
+        the TLS certificate for **robosign.stg** service will expire in about **2000
+        day(s)** from now on **2029-09-17 22:29:56 UTC**. The following are information
+        relevant to the associated TLS certificate.\\n\\n- **Service name** - **robosign.stg**
+        (Certificate stored as **robosign.stg.crt**)\\n- **Issuing authority** - RabbitMQ
+        STAGING CA (**#38988970076690016170053187069021997563**)\\n- **Validity starting**
+        - **2019-09-20 22:29:56 UTC** (**1678 day(s)** passed since beginning)\\n-
+        **Validity ending** - **2029-09-17 22:29:56 UTC** (**1972 day(s)** left before
+        expiring)\\n\\nThe point of contact for the service have been tagged into
+        this ticket and notified about the same. It is strongly recommended to promptly
+        renew the TLS certificate for the service before the existing one expires.\\n\\n_This
+        issue ticket was automatically created by the [**Firmitas notification service**](https://gitlab.com/t0xic0der/firmitas).
+        Please contact [**Fedora Infrastructure**](https://pagure.io/fedora-infrastructure/issues)
+        team if you believe that this notification is mistaken._\\n\", \n    \"custom_fields\":
+        [], \n    \"date_created\": \"1713929205\", \n    \"depends\": [], \n    \"full_url\":
+        \"https://pagure.io/firmitas-notifier/issue/119\", \n    \"id\": 119, \n    \"last_updated\":
+        \"1713929205\", \n    \"milestone\": null, \n    \"priority\": null, \n    \"private\":
+        false, \n    \"related_prs\": [], \n    \"status\": \"Open\", \n    \"tags\":
+        [\n      \"automate\", \n      \"firmitas\", \n      \"notifier\"\n    ],
+        \n    \"title\": \"[FMTS] TLS certificate for robosign.stg service is about
+        to expire in 2000 days\", \n    \"user\": {\n      \"full_url\": \"https://pagure.io/user/t0xic0der\",
+        \n      \"fullname\": \"Akashdeep Dhar\", \n      \"name\": \"t0xic0der\",
+        \n      \"url_path\": \"user/t0xic0der\"\n    }\n  }, \n  \"message\": \"Issue
+        created\"\n}\n"
+    headers:
+      Connection:
+      - Upgrade, Keep-Alive
+      Content-Length:
+      - '2122'
+      Content-Security-Policy:
+      - default-src 'self';script-src 'self' 'nonce-m3AbCuHwP0vBecoUWZDtXnw8C'; style-src
+        'self' 'nonce-m3AbCuHwP0vBecoUWZDtXnw8C'; object-src 'none';base-uri 'self';img-src
+        'self' https:;connect-src 'self' https://pagure.io:8088;frame-src https://docs.pagure.org;frame-ancestors
+        https://pagure.io;
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 24 Apr 2024 03:26:45 GMT
+      Keep-Alive:
+      - timeout=5, max=100
+      Referrer-Policy:
+      - same-origin
+      Server:
+      - Apache/2.4.37 (Red Hat Enterprise Linux) OpenSSL/1.1.1k mod_wsgi/4.6.4 Python/3.6
+      Set-Cookie: ''
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Upgrade:
+      - h2,h2c
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - ALLOW-FROM https://pagure.io/
+      X-Xss-Protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+- request:
+    body: title=%5BFMTS%5D+TLS+certificate+for+waiverdb.stg+service+is+about+to+expire+in+2000+days&issue_content=%0AThis+is+to+inform+that+the+TLS+certificate+for+%2A%2Awaiverdb.stg%2A%2A+service+will+expire+in+about+%2A%2A2000+day%28s%29%2A%2A+from+now+on+%2A%2A2029-03-03+23%3A58%3A40+UTC%2A%2A.+The+following+are+information+relevant+to+the+associated+TLS+certificate.%0A%0A-+%2A%2AService+name%2A%2A+-+%2A%2Awaiverdb.stg%2A%2A+%28Certificate+stored+as+%2A%2Awaiverdb.stg.crt%2A%2A%29%0A-+%2A%2AIssuing+authority%2A%2A+-+RabbitMQ+STAGING+CA+%28%2A%2A%236931031601876762538483728070539648010%2A%2A%29%0A-+%2A%2AValidity+starting%2A%2A+-+%2A%2A2019-03-06+23%3A58%3A40+UTC%2A%2A+%28%2A%2A1876+day%28s%29%2A%2A+passed+since+beginning%29%0A-+%2A%2AValidity+ending%2A%2A+-+%2A%2A2029-03-03+23%3A58%3A40+UTC%2A%2A+%28%2A%2A1774+day%28s%29%2A%2A+left+before+expiring%29%0A%0AThe+point+of+contact+for+the+service+have+been+tagged+into+this+ticket+and+notified+about+the+same.+It+is+strongly+recommended+to+promptly+renew+the+TLS+certificate+for+the+service+before+the+existing+one+expires.%0A%0A_This+issue+ticket+was+automatically+created+by+the+%5B%2A%2AFirmitas+notification+service%2A%2A%5D%28https%3A%2F%2Fgitlab.com%2Ft0xic0der%2Ffirmitas%29.+Please+contact+%5B%2A%2AFedora+Infrastructure%2A%2A%5D%28https%3A%2F%2Fpagure.io%2Ffedora-infrastructure%2Fissues%29+team+if+you+believe+that+this+notification+is+mistaken._%0A&tag=firmitas%2Cautomate%2Cnotifier&assignee=t0xic0der
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1464'
+      Content-Type:
+      - application/x-www-form-urlencoded
+      User-Agent:
+      - python-requests/2.31.0
+    method: POST
+    uri: https://pagure.io/api/0/firmitas-notifier/new_issue
+  response:
+    body:
+      string: "{\n  \"issue\": {\n    \"assignee\": {\n      \"full_url\": \"https://pagure.io/user/t0xic0der\",
+        \n      \"fullname\": \"Akashdeep Dhar\", \n      \"name\": \"t0xic0der\",
+        \n      \"url_path\": \"user/t0xic0der\"\n    }, \n    \"blocks\": [], \n
+        \   \"close_status\": null, \n    \"closed_at\": null, \n    \"closed_by\":
+        null, \n    \"comments\": [], \n    \"content\": \"\\nThis is to inform that
+        the TLS certificate for **waiverdb.stg** service will expire in about **2000
+        day(s)** from now on **2029-03-03 23:58:40 UTC**. The following are information
+        relevant to the associated TLS certificate.\\n\\n- **Service name** - **waiverdb.stg**
+        (Certificate stored as **waiverdb.stg.crt**)\\n- **Issuing authority** - RabbitMQ
+        STAGING CA (**#6931031601876762538483728070539648010**)\\n- **Validity starting**
+        - **2019-03-06 23:58:40 UTC** (**1876 day(s)** passed since beginning)\\n-
+        **Validity ending** - **2029-03-03 23:58:40 UTC** (**1774 day(s)** left before
+        expiring)\\n\\nThe point of contact for the service have been tagged into
+        this ticket and notified about the same. It is strongly recommended to promptly
+        renew the TLS certificate for the service before the existing one expires.\\n\\n_This
+        issue ticket was automatically created by the [**Firmitas notification service**](https://gitlab.com/t0xic0der/firmitas).
+        Please contact [**Fedora Infrastructure**](https://pagure.io/fedora-infrastructure/issues)
+        team if you believe that this notification is mistaken._\\n\", \n    \"custom_fields\":
+        [], \n    \"date_created\": \"1713929206\", \n    \"depends\": [], \n    \"full_url\":
+        \"https://pagure.io/firmitas-notifier/issue/120\", \n    \"id\": 120, \n    \"last_updated\":
+        \"1713929206\", \n    \"milestone\": null, \n    \"priority\": null, \n    \"private\":
+        false, \n    \"related_prs\": [], \n    \"status\": \"Open\", \n    \"tags\":
+        [\n      \"automate\", \n      \"firmitas\", \n      \"notifier\"\n    ],
+        \n    \"title\": \"[FMTS] TLS certificate for waiverdb.stg service is about
+        to expire in 2000 days\", \n    \"user\": {\n      \"full_url\": \"https://pagure.io/user/t0xic0der\",
+        \n      \"fullname\": \"Akashdeep Dhar\", \n      \"name\": \"t0xic0der\",
+        \n      \"url_path\": \"user/t0xic0der\"\n    }\n  }, \n  \"message\": \"Issue
+        created\"\n}\n"
+    headers:
+      Connection:
+      - Upgrade, Keep-Alive
+      Content-Length:
+      - '2121'
+      Content-Security-Policy:
+      - default-src 'self';script-src 'self' 'nonce-GtxgafLeDn1GEdDjHp0HjrM79'; style-src
+        'self' 'nonce-GtxgafLeDn1GEdDjHp0HjrM79'; object-src 'none';base-uri 'self';img-src
+        'self' https:;connect-src 'self' https://pagure.io:8088;frame-src https://docs.pagure.org;frame-ancestors
+        https://pagure.io;
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 24 Apr 2024 03:26:46 GMT
+      Keep-Alive:
+      - timeout=5, max=100
+      Referrer-Policy:
+      - same-origin
+      Server:
+      - Apache/2.4.37 (Red Hat Enterprise Linux) OpenSSL/1.1.1k mod_wsgi/4.6.4 Python/3.6
+      Set-Cookie: ''
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Upgrade:
+      - h2,h2c
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - ALLOW-FROM https://pagure.io/
+      X-Xss-Protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+- request:
+    body: title=%5BFMTS%5D+TLS+certificate+for+joystick.stg+service+is+about+to+expire+in+2000+days&issue_content=%0AThis+is+to+inform+that+the+TLS+certificate+for+%2A%2Ajoystick.stg%2A%2A+service+will+expire+in+about+%2A%2A2000+day%28s%29%2A%2A+from+now+on+%2A%2A2029-05-25+23%3A04%3A35+UTC%2A%2A.+The+following+are+information+relevant+to+the+associated+TLS+certificate.%0A%0A-+%2A%2AService+name%2A%2A+-+%2A%2Ajoystick.stg%2A%2A+%28Certificate+stored+as+%2A%2Ajoystick.stg.crt%2A%2A%29%0A-+%2A%2AIssuing+authority%2A%2A+-+RabbitMQ+STAGING+CA+%28%2A%2A%2344541479035547978831580614561088909678%2A%2A%29%0A-+%2A%2AValidity+starting%2A%2A+-+%2A%2A2019-05-28+23%3A04%3A35+UTC%2A%2A+%28%2A%2A1793+day%28s%29%2A%2A+passed+since+beginning%29%0A-+%2A%2AValidity+ending%2A%2A+-+%2A%2A2029-05-25+23%3A04%3A35+UTC%2A%2A+%28%2A%2A1857+day%28s%29%2A%2A+left+before+expiring%29%0A%0AThe+point+of+contact+for+the+service+have+been+tagged+into+this+ticket+and+notified+about+the+same.+It+is+strongly+recommended+to+promptly+renew+the+TLS+certificate+for+the+service+before+the+existing+one+expires.%0A%0A_This+issue+ticket+was+automatically+created+by+the+%5B%2A%2AFirmitas+notification+service%2A%2A%5D%28https%3A%2F%2Fgitlab.com%2Ft0xic0der%2Ffirmitas%29.+Please+contact+%5B%2A%2AFedora+Infrastructure%2A%2A%5D%28https%3A%2F%2Fpagure.io%2Ffedora-infrastructure%2Fissues%29+team+if+you+believe+that+this+notification+is+mistaken._%0A&tag=firmitas%2Cautomate%2Cnotifier&assignee=t0xic0der
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1465'
+      Content-Type:
+      - application/x-www-form-urlencoded
+      User-Agent:
+      - python-requests/2.31.0
+    method: POST
+    uri: https://pagure.io/api/0/firmitas-notifier/new_issue
+  response:
+    body:
+      string: "{\n  \"issue\": {\n    \"assignee\": {\n      \"full_url\": \"https://pagure.io/user/t0xic0der\",
+        \n      \"fullname\": \"Akashdeep Dhar\", \n      \"name\": \"t0xic0der\",
+        \n      \"url_path\": \"user/t0xic0der\"\n    }, \n    \"blocks\": [], \n
+        \   \"close_status\": null, \n    \"closed_at\": null, \n    \"closed_by\":
+        null, \n    \"comments\": [], \n    \"content\": \"\\nThis is to inform that
+        the TLS certificate for **joystick.stg** service will expire in about **2000
+        day(s)** from now on **2029-05-25 23:04:35 UTC**. The following are information
+        relevant to the associated TLS certificate.\\n\\n- **Service name** - **joystick.stg**
+        (Certificate stored as **joystick.stg.crt**)\\n- **Issuing authority** - RabbitMQ
+        STAGING CA (**#44541479035547978831580614561088909678**)\\n- **Validity starting**
+        - **2019-05-28 23:04:35 UTC** (**1793 day(s)** passed since beginning)\\n-
+        **Validity ending** - **2029-05-25 23:04:35 UTC** (**1857 day(s)** left before
+        expiring)\\n\\nThe point of contact for the service have been tagged into
+        this ticket and notified about the same. It is strongly recommended to promptly
+        renew the TLS certificate for the service before the existing one expires.\\n\\n_This
+        issue ticket was automatically created by the [**Firmitas notification service**](https://gitlab.com/t0xic0der/firmitas).
+        Please contact [**Fedora Infrastructure**](https://pagure.io/fedora-infrastructure/issues)
+        team if you believe that this notification is mistaken._\\n\", \n    \"custom_fields\":
+        [], \n    \"date_created\": \"1713929633\", \n    \"depends\": [], \n    \"full_url\":
+        \"https://pagure.io/firmitas-notifier/issue/121\", \n    \"id\": 121, \n    \"last_updated\":
+        \"1713929633\", \n    \"milestone\": null, \n    \"priority\": null, \n    \"private\":
+        false, \n    \"related_prs\": [], \n    \"status\": \"Open\", \n    \"tags\":
+        [\n      \"automate\", \n      \"firmitas\", \n      \"notifier\"\n    ],
+        \n    \"title\": \"[FMTS] TLS certificate for joystick.stg service is about
+        to expire in 2000 days\", \n    \"user\": {\n      \"full_url\": \"https://pagure.io/user/t0xic0der\",
+        \n      \"fullname\": \"Akashdeep Dhar\", \n      \"name\": \"t0xic0der\",
+        \n      \"url_path\": \"user/t0xic0der\"\n    }\n  }, \n  \"message\": \"Issue
+        created\"\n}\n"
+    headers:
+      Connection:
+      - Upgrade, Keep-Alive
+      Content-Length:
+      - '2122'
+      Content-Security-Policy:
+      - default-src 'self';script-src 'self' 'nonce-igXy4q4JtLEd09AUMJLV9rc0b'; style-src
+        'self' 'nonce-igXy4q4JtLEd09AUMJLV9rc0b'; object-src 'none';base-uri 'self';img-src
+        'self' https:;connect-src 'self' https://pagure.io:8088;frame-src https://docs.pagure.org;frame-ancestors
+        https://pagure.io;
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 24 Apr 2024 03:33:53 GMT
+      Keep-Alive:
+      - timeout=5, max=100
+      Referrer-Policy:
+      - same-origin
+      Server:
+      - Apache/2.4.37 (Red Hat Enterprise Linux) OpenSSL/1.1.1k mod_wsgi/4.6.4 Python/3.6
+      Set-Cookie: ''
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Upgrade:
+      - h2,h2c
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - ALLOW-FROM https://pagure.io/
+      X-Xss-Protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+- request:
+    body: title=%5BFMTS%5D+TLS+certificate+for+nuancier.stg+service+is+about+to+expire+in+2000+days&issue_content=%0AThis+is+to+inform+that+the+TLS+certificate+for+%2A%2Anuancier.stg%2A%2A+service+will+expire+in+about+%2A%2A2000+day%28s%29%2A%2A+from+now+on+%2A%2A2029-02-18+18%3A34%3A13+UTC%2A%2A.+The+following+are+information+relevant+to+the+associated+TLS+certificate.%0A%0A-+%2A%2AService+name%2A%2A+-+%2A%2Anuancier.stg%2A%2A+%28Certificate+stored+as+%2A%2Anuancier.stg.crt%2A%2A%29%0A-+%2A%2AIssuing+authority%2A%2A+-+RabbitMQ+STAGING+CA+%28%2A%2A%23209068775949833699801370873051828148798%2A%2A%29%0A-+%2A%2AValidity+starting%2A%2A+-+%2A%2A2019-02-21+18%3A34%3A13+UTC%2A%2A+%28%2A%2A1889+day%28s%29%2A%2A+passed+since+beginning%29%0A-+%2A%2AValidity+ending%2A%2A+-+%2A%2A2029-02-18+18%3A34%3A13+UTC%2A%2A+%28%2A%2A1761+day%28s%29%2A%2A+left+before+expiring%29%0A%0AThe+point+of+contact+for+the+service+have+been+tagged+into+this+ticket+and+notified+about+the+same.+It+is+strongly+recommended+to+promptly+renew+the+TLS+certificate+for+the+service+before+the+existing+one+expires.%0A%0A_This+issue+ticket+was+automatically+created+by+the+%5B%2A%2AFirmitas+notification+service%2A%2A%5D%28https%3A%2F%2Fgitlab.com%2Ft0xic0der%2Ffirmitas%29.+Please+contact+%5B%2A%2AFedora+Infrastructure%2A%2A%5D%28https%3A%2F%2Fpagure.io%2Ffedora-infrastructure%2Fissues%29+team+if+you+believe+that+this+notification+is+mistaken._%0A&tag=firmitas%2Cautomate%2Cnotifier&assignee=t0xic0der
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1466'
+      Content-Type:
+      - application/x-www-form-urlencoded
+      User-Agent:
+      - python-requests/2.31.0
+    method: POST
+    uri: https://pagure.io/api/0/firmitas-notifier/new_issue
+  response:
+    body:
+      string: "{\n  \"issue\": {\n    \"assignee\": {\n      \"full_url\": \"https://pagure.io/user/t0xic0der\",
+        \n      \"fullname\": \"Akashdeep Dhar\", \n      \"name\": \"t0xic0der\",
+        \n      \"url_path\": \"user/t0xic0der\"\n    }, \n    \"blocks\": [], \n
+        \   \"close_status\": null, \n    \"closed_at\": null, \n    \"closed_by\":
+        null, \n    \"comments\": [], \n    \"content\": \"\\nThis is to inform that
+        the TLS certificate for **nuancier.stg** service will expire in about **2000
+        day(s)** from now on **2029-02-18 18:34:13 UTC**. The following are information
+        relevant to the associated TLS certificate.\\n\\n- **Service name** - **nuancier.stg**
+        (Certificate stored as **nuancier.stg.crt**)\\n- **Issuing authority** - RabbitMQ
+        STAGING CA (**#209068775949833699801370873051828148798**)\\n- **Validity starting**
+        - **2019-02-21 18:34:13 UTC** (**1889 day(s)** passed since beginning)\\n-
+        **Validity ending** - **2029-02-18 18:34:13 UTC** (**1761 day(s)** left before
+        expiring)\\n\\nThe point of contact for the service have been tagged into
+        this ticket and notified about the same. It is strongly recommended to promptly
+        renew the TLS certificate for the service before the existing one expires.\\n\\n_This
+        issue ticket was automatically created by the [**Firmitas notification service**](https://gitlab.com/t0xic0der/firmitas).
+        Please contact [**Fedora Infrastructure**](https://pagure.io/fedora-infrastructure/issues)
+        team if you believe that this notification is mistaken._\\n\", \n    \"custom_fields\":
+        [], \n    \"date_created\": \"1713929635\", \n    \"depends\": [], \n    \"full_url\":
+        \"https://pagure.io/firmitas-notifier/issue/122\", \n    \"id\": 122, \n    \"last_updated\":
+        \"1713929635\", \n    \"milestone\": null, \n    \"priority\": null, \n    \"private\":
+        false, \n    \"related_prs\": [], \n    \"status\": \"Open\", \n    \"tags\":
+        [\n      \"automate\", \n      \"firmitas\", \n      \"notifier\"\n    ],
+        \n    \"title\": \"[FMTS] TLS certificate for nuancier.stg service is about
+        to expire in 2000 days\", \n    \"user\": {\n      \"full_url\": \"https://pagure.io/user/t0xic0der\",
+        \n      \"fullname\": \"Akashdeep Dhar\", \n      \"name\": \"t0xic0der\",
+        \n      \"url_path\": \"user/t0xic0der\"\n    }\n  }, \n  \"message\": \"Issue
+        created\"\n}\n"
+    headers:
+      Connection:
+      - Upgrade, Keep-Alive
+      Content-Length:
+      - '2123'
+      Content-Security-Policy:
+      - default-src 'self';script-src 'self' 'nonce-WkIdbCihsKrideLyoyjjUlpTV'; style-src
+        'self' 'nonce-WkIdbCihsKrideLyoyjjUlpTV'; object-src 'none';base-uri 'self';img-src
+        'self' https:;connect-src 'self' https://pagure.io:8088;frame-src https://docs.pagure.org;frame-ancestors
+        https://pagure.io;
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 24 Apr 2024 03:33:55 GMT
+      Keep-Alive:
+      - timeout=5, max=100
+      Referrer-Policy:
+      - same-origin
+      Server:
+      - Apache/2.4.37 (Red Hat Enterprise Linux) OpenSSL/1.1.1k mod_wsgi/4.6.4 Python/3.6
+      Set-Cookie: ''
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Upgrade:
+      - h2,h2c
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - ALLOW-FROM https://pagure.io/
+      X-Xss-Protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+- request:
+    body: title=%5BFMTS%5D+TLS+certificate+for+robosign.stg+service+is+about+to+expire+in+2000+days&issue_content=%0AThis+is+to+inform+that+the+TLS+certificate+for+%2A%2Arobosign.stg%2A%2A+service+will+expire+in+about+%2A%2A2000+day%28s%29%2A%2A+from+now+on+%2A%2A2029-09-17+22%3A29%3A56+UTC%2A%2A.+The+following+are+information+relevant+to+the+associated+TLS+certificate.%0A%0A-+%2A%2AService+name%2A%2A+-+%2A%2Arobosign.stg%2A%2A+%28Certificate+stored+as+%2A%2Arobosign.stg.crt%2A%2A%29%0A-+%2A%2AIssuing+authority%2A%2A+-+RabbitMQ+STAGING+CA+%28%2A%2A%2338988970076690016170053187069021997563%2A%2A%29%0A-+%2A%2AValidity+starting%2A%2A+-+%2A%2A2019-09-20+22%3A29%3A56+UTC%2A%2A+%28%2A%2A1678+day%28s%29%2A%2A+passed+since+beginning%29%0A-+%2A%2AValidity+ending%2A%2A+-+%2A%2A2029-09-17+22%3A29%3A56+UTC%2A%2A+%28%2A%2A1972+day%28s%29%2A%2A+left+before+expiring%29%0A%0AThe+point+of+contact+for+the+service+have+been+tagged+into+this+ticket+and+notified+about+the+same.+It+is+strongly+recommended+to+promptly+renew+the+TLS+certificate+for+the+service+before+the+existing+one+expires.%0A%0A_This+issue+ticket+was+automatically+created+by+the+%5B%2A%2AFirmitas+notification+service%2A%2A%5D%28https%3A%2F%2Fgitlab.com%2Ft0xic0der%2Ffirmitas%29.+Please+contact+%5B%2A%2AFedora+Infrastructure%2A%2A%5D%28https%3A%2F%2Fpagure.io%2Ffedora-infrastructure%2Fissues%29+team+if+you+believe+that+this+notification+is+mistaken._%0A&tag=firmitas%2Cautomate%2Cnotifier&assignee=t0xic0der
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1465'
+      Content-Type:
+      - application/x-www-form-urlencoded
+      User-Agent:
+      - python-requests/2.31.0
+    method: POST
+    uri: https://pagure.io/api/0/firmitas-notifier/new_issue
+  response:
+    body:
+      string: "{\n  \"issue\": {\n    \"assignee\": {\n      \"full_url\": \"https://pagure.io/user/t0xic0der\",
+        \n      \"fullname\": \"Akashdeep Dhar\", \n      \"name\": \"t0xic0der\",
+        \n      \"url_path\": \"user/t0xic0der\"\n    }, \n    \"blocks\": [], \n
+        \   \"close_status\": null, \n    \"closed_at\": null, \n    \"closed_by\":
+        null, \n    \"comments\": [], \n    \"content\": \"\\nThis is to inform that
+        the TLS certificate for **robosign.stg** service will expire in about **2000
+        day(s)** from now on **2029-09-17 22:29:56 UTC**. The following are information
+        relevant to the associated TLS certificate.\\n\\n- **Service name** - **robosign.stg**
+        (Certificate stored as **robosign.stg.crt**)\\n- **Issuing authority** - RabbitMQ
+        STAGING CA (**#38988970076690016170053187069021997563**)\\n- **Validity starting**
+        - **2019-09-20 22:29:56 UTC** (**1678 day(s)** passed since beginning)\\n-
+        **Validity ending** - **2029-09-17 22:29:56 UTC** (**1972 day(s)** left before
+        expiring)\\n\\nThe point of contact for the service have been tagged into
+        this ticket and notified about the same. It is strongly recommended to promptly
+        renew the TLS certificate for the service before the existing one expires.\\n\\n_This
+        issue ticket was automatically created by the [**Firmitas notification service**](https://gitlab.com/t0xic0der/firmitas).
+        Please contact [**Fedora Infrastructure**](https://pagure.io/fedora-infrastructure/issues)
+        team if you believe that this notification is mistaken._\\n\", \n    \"custom_fields\":
+        [], \n    \"date_created\": \"1713929637\", \n    \"depends\": [], \n    \"full_url\":
+        \"https://pagure.io/firmitas-notifier/issue/123\", \n    \"id\": 123, \n    \"last_updated\":
+        \"1713929637\", \n    \"milestone\": null, \n    \"priority\": null, \n    \"private\":
+        false, \n    \"related_prs\": [], \n    \"status\": \"Open\", \n    \"tags\":
+        [\n      \"automate\", \n      \"firmitas\", \n      \"notifier\"\n    ],
+        \n    \"title\": \"[FMTS] TLS certificate for robosign.stg service is about
+        to expire in 2000 days\", \n    \"user\": {\n      \"full_url\": \"https://pagure.io/user/t0xic0der\",
+        \n      \"fullname\": \"Akashdeep Dhar\", \n      \"name\": \"t0xic0der\",
+        \n      \"url_path\": \"user/t0xic0der\"\n    }\n  }, \n  \"message\": \"Issue
+        created\"\n}\n"
+    headers:
+      Connection:
+      - Upgrade, Keep-Alive
+      Content-Length:
+      - '2122'
+      Content-Security-Policy:
+      - default-src 'self';script-src 'self' 'nonce-4QZuLDjnbQG7kbm4idtdGgjCP'; style-src
+        'self' 'nonce-4QZuLDjnbQG7kbm4idtdGgjCP'; object-src 'none';base-uri 'self';img-src
+        'self' https:;connect-src 'self' https://pagure.io:8088;frame-src https://docs.pagure.org;frame-ancestors
+        https://pagure.io;
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 24 Apr 2024 03:33:57 GMT
+      Keep-Alive:
+      - timeout=5, max=100
+      Referrer-Policy:
+      - same-origin
+      Server:
+      - Apache/2.4.37 (Red Hat Enterprise Linux) OpenSSL/1.1.1k mod_wsgi/4.6.4 Python/3.6
+      Set-Cookie: ''
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Upgrade:
+      - h2,h2c
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - ALLOW-FROM https://pagure.io/
+      X-Xss-Protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+- request:
+    body: title=%5BFMTS%5D+TLS+certificate+for+waiverdb.stg+service+is+about+to+expire+in+2000+days&issue_content=%0AThis+is+to+inform+that+the+TLS+certificate+for+%2A%2Awaiverdb.stg%2A%2A+service+will+expire+in+about+%2A%2A2000+day%28s%29%2A%2A+from+now+on+%2A%2A2029-03-03+23%3A58%3A40+UTC%2A%2A.+The+following+are+information+relevant+to+the+associated+TLS+certificate.%0A%0A-+%2A%2AService+name%2A%2A+-+%2A%2Awaiverdb.stg%2A%2A+%28Certificate+stored+as+%2A%2Awaiverdb.stg.crt%2A%2A%29%0A-+%2A%2AIssuing+authority%2A%2A+-+RabbitMQ+STAGING+CA+%28%2A%2A%236931031601876762538483728070539648010%2A%2A%29%0A-+%2A%2AValidity+starting%2A%2A+-+%2A%2A2019-03-06+23%3A58%3A40+UTC%2A%2A+%28%2A%2A1876+day%28s%29%2A%2A+passed+since+beginning%29%0A-+%2A%2AValidity+ending%2A%2A+-+%2A%2A2029-03-03+23%3A58%3A40+UTC%2A%2A+%28%2A%2A1774+day%28s%29%2A%2A+left+before+expiring%29%0A%0AThe+point+of+contact+for+the+service+have+been+tagged+into+this+ticket+and+notified+about+the+same.+It+is+strongly+recommended+to+promptly+renew+the+TLS+certificate+for+the+service+before+the+existing+one+expires.%0A%0A_This+issue+ticket+was+automatically+created+by+the+%5B%2A%2AFirmitas+notification+service%2A%2A%5D%28https%3A%2F%2Fgitlab.com%2Ft0xic0der%2Ffirmitas%29.+Please+contact+%5B%2A%2AFedora+Infrastructure%2A%2A%5D%28https%3A%2F%2Fpagure.io%2Ffedora-infrastructure%2Fissues%29+team+if+you+believe+that+this+notification+is+mistaken._%0A&tag=firmitas%2Cautomate%2Cnotifier&assignee=t0xic0der
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1464'
+      Content-Type:
+      - application/x-www-form-urlencoded
+      User-Agent:
+      - python-requests/2.31.0
+    method: POST
+    uri: https://pagure.io/api/0/firmitas-notifier/new_issue
+  response:
+    body:
+      string: "{\n  \"issue\": {\n    \"assignee\": {\n      \"full_url\": \"https://pagure.io/user/t0xic0der\",
+        \n      \"fullname\": \"Akashdeep Dhar\", \n      \"name\": \"t0xic0der\",
+        \n      \"url_path\": \"user/t0xic0der\"\n    }, \n    \"blocks\": [], \n
+        \   \"close_status\": null, \n    \"closed_at\": null, \n    \"closed_by\":
+        null, \n    \"comments\": [], \n    \"content\": \"\\nThis is to inform that
+        the TLS certificate for **waiverdb.stg** service will expire in about **2000
+        day(s)** from now on **2029-03-03 23:58:40 UTC**. The following are information
+        relevant to the associated TLS certificate.\\n\\n- **Service name** - **waiverdb.stg**
+        (Certificate stored as **waiverdb.stg.crt**)\\n- **Issuing authority** - RabbitMQ
+        STAGING CA (**#6931031601876762538483728070539648010**)\\n- **Validity starting**
+        - **2019-03-06 23:58:40 UTC** (**1876 day(s)** passed since beginning)\\n-
+        **Validity ending** - **2029-03-03 23:58:40 UTC** (**1774 day(s)** left before
+        expiring)\\n\\nThe point of contact for the service have been tagged into
+        this ticket and notified about the same. It is strongly recommended to promptly
+        renew the TLS certificate for the service before the existing one expires.\\n\\n_This
+        issue ticket was automatically created by the [**Firmitas notification service**](https://gitlab.com/t0xic0der/firmitas).
+        Please contact [**Fedora Infrastructure**](https://pagure.io/fedora-infrastructure/issues)
+        team if you believe that this notification is mistaken._\\n\", \n    \"custom_fields\":
+        [], \n    \"date_created\": \"1713929638\", \n    \"depends\": [], \n    \"full_url\":
+        \"https://pagure.io/firmitas-notifier/issue/124\", \n    \"id\": 124, \n    \"last_updated\":
+        \"1713929638\", \n    \"milestone\": null, \n    \"priority\": null, \n    \"private\":
+        false, \n    \"related_prs\": [], \n    \"status\": \"Open\", \n    \"tags\":
+        [\n      \"automate\", \n      \"firmitas\", \n      \"notifier\"\n    ],
+        \n    \"title\": \"[FMTS] TLS certificate for waiverdb.stg service is about
+        to expire in 2000 days\", \n    \"user\": {\n      \"full_url\": \"https://pagure.io/user/t0xic0der\",
+        \n      \"fullname\": \"Akashdeep Dhar\", \n      \"name\": \"t0xic0der\",
+        \n      \"url_path\": \"user/t0xic0der\"\n    }\n  }, \n  \"message\": \"Issue
+        created\"\n}\n"
+    headers:
+      Connection:
+      - Upgrade, Keep-Alive
+      Content-Length:
+      - '2121'
+      Content-Security-Policy:
+      - default-src 'self';script-src 'self' 'nonce-v9lGZaG8MhsFBibbDAdkxAfQK'; style-src
+        'self' 'nonce-v9lGZaG8MhsFBibbDAdkxAfQK'; object-src 'none';base-uri 'self';img-src
+        'self' https:;connect-src 'self' https://pagure.io:8088;frame-src https://docs.pagure.org;frame-ancestors
+        https://pagure.io;
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 24 Apr 2024 03:33:58 GMT
+      Keep-Alive:
+      - timeout=5, max=100
+      Referrer-Policy:
+      - same-origin
+      Server:
+      - Apache/2.4.37 (Red Hat Enterprise Linux) OpenSSL/1.1.1k mod_wsgi/4.6.4 Python/3.6
+      Set-Cookie: ''
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Upgrade:
+      - h2,h2c
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - ALLOW-FROM https://pagure.io/
+      X-Xss-Protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+version: 1
