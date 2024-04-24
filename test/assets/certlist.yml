@@ -1,0 +1,97 @@
+---
+dtfedmsg.stg:
+  path: dtfedmsg.stg.crt
+  user: t0xic0der
+  certstat:
+    cstarted:
+    cstopped:
+    daystobt: 0
+    daystodd: 0
+    issuauth:
+    serialno:
+    stopdate:
+    strtdate:
+  notistat:
+    done: false
+    link:
+    time:
+joystick.stg:
+  path: joystick.stg.crt
+  user: t0xic0der
+  certstat:
+    cstarted:
+    cstopped:
+    daystobt: 0
+    daystodd: 0
+    issuauth:
+    serialno:
+    stopdate:
+    strtdate:
+  notistat:
+    done: false
+    link:
+    time:
+mistaken.stg:
+  path: mistaken.stg.crt
+  user: t0xic0der
+  certstat:
+    cstarted:
+    cstopped:
+    daystobt: 0
+    daystodd: 0
+    issuauth:
+    serialno:
+    stopdate:
+    strtdate:
+  notistat:
+    done: false
+    link:
+    time:
+nuancier.stg:
+  path: nuancier.stg.crt
+  user: t0xic0der
+  certstat:
+    cstarted:
+    cstopped:
+    daystobt: 0
+    daystodd: 0
+    issuauth:
+    serialno:
+    stopdate:
+    strtdate:
+  notistat:
+    done: false
+    link:
+    time:
+robosign.stg:
+  path: robosign.stg.crt
+  user: t0xic0der
+  certstat:
+    cstarted:
+    cstopped:
+    daystobt: 0
+    daystodd: 0
+    issuauth:
+    serialno:
+    stopdate:
+    strtdate:
+  notistat:
+    done: false
+    link:
+    time:
+waiverdb.stg:
+  path: waiverdb.stg.crt
+  user: t0xic0der
+  certstat:
+    cstarted:
+    cstopped:
+    daystobt: 0
+    daystodd: 0
+    issuauth:
+    serialno:
+    stopdate:
+    strtdate:
+  notistat:
+    done: false
+    link:
+    time:

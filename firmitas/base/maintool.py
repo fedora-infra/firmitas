@@ -1,3 +1,26 @@
+"""
+Firmitas
+Copyright (C) 2023-2024 Akashdeep Dhar
+
+This program is free software: you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any later
+version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+details.
+
+You should have received a copy of the GNU General Public License along with
+this program.  If not, see <https://www.gnu.org/licenses/>.
+
+Any Red Hat trademarks that are incorporated in the source code or
+documentation are not subject to the GNU General Public License and may only
+be used or replicated with the express permission of Red Hat, Inc.
+"""
+
+
 import os
 import sys
 from datetime import datetime
@@ -22,11 +45,11 @@ def readcert(certobjc):
     logrdata.logrobjc.debug(f"[{commname}] Serial number {serialno}")
     logrdata.logrobjc.debug(
         f"[{commname}] Valid from {strtdate} ({abs(daystobt)} days "
-        + "{'passed since beginning' if cstarted else 'left before beginning'})"
+        + f"{'passed since beginning' if cstarted else 'left before beginning'})"
     )
     logrdata.logrobjc.debug(
         f"[{commname}] Valid until {stopdate} ({abs(daystodd)} days "
-        + "{'passed since expiring' if cstopped else 'left before expiring'})"
+        + f"{'passed since expiring' if cstopped else 'left before expiring'})"
     )
     return strtdate, stopdate, cstarted, cstopped, daystobt, daystodd, issuauth, serialno
 
@@ -34,15 +57,15 @@ def readcert(certobjc):
 def probedir():
     logrdata.logrobjc.info("Probing into the configured directory")
     doneqant, failqant, totlqant = 0, 0, 0
-    if os.path.exists(standard.hostloca):
-        standard.certdict = yaml.safe_load(Path(standard.hostloca).read_text())
-        logrdata.logrobjc.info(
-            f"Validating {len(standard.certdict)} X.509-standard TLS certificates"
-        )
-        for nameindx in standard.certdict:
-            totlqant += 1
-            certpath = Path(standard.certloca, standard.certdict[nameindx]["path"])
-            if os.path.exists(certpath):
+    standard.certdict = yaml.safe_load(Path(standard.hostloca).read_text())
+    logrdata.logrobjc.info(
+        f"Validating {len(standard.certdict)} X.509-standard TLS certificates"
+    )
+    for nameindx in standard.certdict:
+        totlqant += 1
+        certpath = Path(standard.certloca, standard.certdict[nameindx]["path"])
+        if os.path.exists(certpath):
+            try:
                 certobjc = x509.load_pem_x509_certificate(certpath.read_bytes(), default_backend())
                 (
                     standard.certdict[nameindx]["certstat"]["strtdate"],
@@ -59,23 +82,23 @@ def probedir():
                     f"[{nameindx}] The specified X.509-standard TLS certificate was read "
                     + "successfully"
                 )
-            else:
+            except ValueError:
                 failqant += 1
-                logrdata.logrobjc.warning(
-                    f"[{nameindx}] The specified X.509-standard TLS certificate could not "
-                    + "be located"
+                logrdata.logrobjc.error(
+                    f"[{nameindx}] The specified X.509-standard TLS certificate could not be read"
                 )
-        logrdata.logrobjc.info(
-            f"Of {totlqant} TLS certificates, {doneqant} TLS certificate(s) were read successfully "
-            + f"while {failqant} TLS certificate(s) could not be read"
-        )
-        with open(standard.hostloca, "w") as yamlfile:
-            yaml.safe_dump(standard.certdict, yamlfile)
-    else:
-        logrdata.logrobjc.error(
-            "Please set the directory containing the service hostname map properly"
-        )
-        sys.exit(1)
+        else:
+            failqant += 1
+            logrdata.logrobjc.warning(
+                f"[{nameindx}] The specified X.509-standard TLS certificate could not "
+                + "be located"
+            )
+    logrdata.logrobjc.info(
+        f"Of {totlqant} TLS certificates, {doneqant} TLS certificate(s) were read successfully "
+        + f"while {failqant} TLS certificate(s) could not be read"
+    )
+    with open(standard.hostloca, "w") as yamlfile:
+        yaml.safe_dump(standard.certdict, yamlfile)
 
 
 def gonotify():
@@ -136,7 +159,4 @@ def gonotify():
         sys.exit(1)
     elif standard.gitforge == "github":
         logrdata.logrobjc.error("The notification has not yet been implemented on GitHub")
-        sys.exit(1)
-    else:
-        logrdata.logrobjc.error("The specified ticketing repository forge is not yet supported")
         sys.exit(1)
