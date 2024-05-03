@@ -149,7 +149,7 @@ def locate_config_with_simulate_coming_expiry(daysqant: int = 2000, password: st
             id="Invoke notifications with accurate password",
         ),
         pytest.param(
-            f"--conffile {locate_config_with_simulate_coming_expiry(password="MISTAKEN")}",  # noqa : S106
+            f"--conffile {locate_config_with_simulate_coming_expiry(password='MISTAKEN')}",  # noqa : S106
             0,
             list_etoe_nope(),
             id="Invoke notifications with mistaken password",

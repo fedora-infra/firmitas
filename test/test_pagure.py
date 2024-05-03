@@ -23,9 +23,19 @@ be used or replicated with the express permission of Red Hat, Inc.
 
 from unittest.mock import Mock
 
+import pytest
+
 from firmitas.unit import gopagure
 
 
+@pytest.mark.parametrize(
+    "",
+    [
+        pytest.param(
+            id="Exception related to Pagure",
+        ),
+    ]
+)
 def test_pagure():
     gopagure.post = Mock()
     gopagure.post.side_effect = Exception()
