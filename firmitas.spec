@@ -1,5 +1,5 @@
 Name:           firmitas
-Version:        0.1.2
+Version:        0.1.3
 Release:        1%{?dist}
 Summary:        Simple notification service for X.509-standard TLS certificate statuses
 
@@ -33,6 +33,13 @@ Simple notification service for X.509-standard TLS certificate statuses
 %{_bindir}/firmitas
 
 %changelog
+
+* Wed Jul 03 2024 Akashdeep Dhar <t0xic0der@fedoraproject.org> - 0.1.3-1
+- Project moved from GitLab to GitHub (gridhead/firmitas to fedora-infra/firmitas)
+- Add CI workflow for the project
+- Automated dependency update - Bump requests from 2.31.0 to 2.32.2
+- Automated dependency update - Bump urllib3 from 1.26.18 to 1.26.19
+- Automated dependency update - Bump cryptography from 41.0.7 to 42.0.4
 
 * Thu Jun 08 2023 Akashdeep Dhar <t0xic0der@fedoraproject.org> - 0.1.2-1
 - Made cosmetic changes to the RPM spec file
