@@ -25,6 +25,11 @@ from os import environ as envr
 from os import makedirs, path
 from secrets import token_hex
 from shutil import copyfile, rmtree
+
+import pytest
+from click.testing import CliRunner
+
+from firmitas.main import main
 from test import (
     list_etoe_auth,
     list_etoe_github,
@@ -32,11 +37,6 @@ from test import (
     list_etoe_nope,
     list_etoe_pagure,
 )
-
-import pytest
-from click.testing import CliRunner
-
-from firmitas.main import main
 
 
 def locate_config(gitforge: str = "pagure") -> str:
@@ -159,6 +159,7 @@ def locate_config_with_simulate_coming_expiry(daysqant: int = 2000, password: st
 def test_etoe(cmdl, code, text) -> None:
     runner = CliRunner()
     result = runner.invoke(main, cmdl)
+    print(result.output)
     assert result.exit_code == code  # noqa: S101
     for indx in text:
         assert indx in result.output  # noqa: S101
