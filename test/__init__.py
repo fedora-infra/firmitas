@@ -78,28 +78,28 @@ def list_etoe_auth(list_etoe: list = standard_list.copy()) -> list:  # noqa : B0
         "[WARNING] [joystick.stg] The specified X.509 TLS certificate is about to expire in under",  # noqa : E501
         "[DEBUG] [joystick.stg] Notification request attempt count - 1 of 5",
         "[DEBUG] Starting new HTTPS connection (1): pagure.io:443",
-        f"[DEBUG] https://pagure.io:443 \"POST /api/0/{envr['FIRMITAS_TEST_REPONAME']}/new_issue HTTP/1.1\" 200",  # noqa : E501
+        f"[DEBUG] https://pagure.io:443 \"POST /api/0/{envr['FIRMITAS_TEST_REPONAME']}/new_issue HTTP/",  # noqa : E501
         "[DEBUG] [joystick.stg] The notification request was met with response code 200",
         "[DEBUG] [joystick.stg] The created notification ticket was created with ID",
         "[INFO] [joystick.stg] The notification ticket for renewing the TLS certificate has now been created",  # noqa : E501
         "[WARNING] [nuancier.stg] The specified X.509 TLS certificate is about to expire in under",  # noqa : E501
         "[DEBUG] [nuancier.stg] Notification request attempt count - 1 of 5",
         "[DEBUG] Starting new HTTPS connection (1): pagure.io:443",
-        f"[DEBUG] https://pagure.io:443 \"POST /api/0/{envr['FIRMITAS_TEST_REPONAME']}/new_issue HTTP/1.1\" 200",  # noqa : E501
+        f"[DEBUG] https://pagure.io:443 \"POST /api/0/{envr['FIRMITAS_TEST_REPONAME']}/new_issue HTTP/",  # noqa : E501
         "[DEBUG] [nuancier.stg] The notification request was met with response code 200",
         "[DEBUG] [nuancier.stg] The created notification ticket was created with ID",
         "[INFO] [nuancier.stg] The notification ticket for renewing the TLS certificate has now been created",  # noqa : E501
         "[WARNING] [robosign.stg] The specified X.509 TLS certificate is about to expire in under",  # noqa : E501
         "[DEBUG] [robosign.stg] Notification request attempt count - 1 of 5",
         "[DEBUG] Starting new HTTPS connection (1): pagure.io:443",
-        f"[DEBUG] https://pagure.io:443 \"POST /api/0/{envr['FIRMITAS_TEST_REPONAME']}/new_issue HTTP/1.1\" 200",  # noqa : E501
+        f"[DEBUG] https://pagure.io:443 \"POST /api/0/{envr['FIRMITAS_TEST_REPONAME']}/new_issue HTTP/",  # noqa : E501
         "[DEBUG] [robosign.stg] The notification request was met with response code 200",
         "[DEBUG] [robosign.stg] The created notification ticket was created with ID",
         "[INFO] [robosign.stg] The notification ticket for renewing the TLS certificate has now been created",  # noqa : E501
         "[WARNING] [waiverdb.stg] The specified X.509 TLS certificate is about to expire in under",  # noqa : E501
         "[DEBUG] [waiverdb.stg] Notification request attempt count - 1 of 5",
         "[DEBUG] Starting new HTTPS connection (1): pagure.io:443",
-        f"[DEBUG] https://pagure.io:443 \"POST /api/0/{envr['FIRMITAS_TEST_REPONAME']}/new_issue HTTP/1.1\" 200",  # noqa : E501
+        f"[DEBUG] https://pagure.io:443 \"POST /api/0/{envr['FIRMITAS_TEST_REPONAME']}/new_issue HTTP/",  # noqa : E501
         "[DEBUG] [waiverdb.stg] The notification request was met with response code 200",
         "[DEBUG] [waiverdb.stg] The created notification ticket was created with ID",
         "[INFO] [waiverdb.stg] The notification ticket for renewing the TLS certificate has now been created",  # noqa : E501
@@ -132,7 +132,7 @@ def list_etoe_nope(list_etoe: list = standard_list.copy()) -> list:  # noqa : B0
         "[DEBUG] [waiverdb.stg] Notification request attempt count - 4 of 5",
         "[DEBUG] [waiverdb.stg] Notification request attempt count - 5 of 5",
         "[DEBUG] Starting new HTTPS connection (1): pagure.io:443",
-        f"[DEBUG] https://pagure.io:443 \"POST /api/0/{envr['FIRMITAS_TEST_REPONAME']}/new_issue HTTP/1.1\" 401",  # noqa : E501
+        f"[DEBUG] https://pagure.io:443 \"POST /api/0/{envr['FIRMITAS_TEST_REPONAME']}/new_issue HTTP/",  # noqa : E501
         "[DEBUG] [joystick.stg] The notification request was met with response code 401",
         "[DEBUG] [nuancier.stg] The notification request was met with response code 401",
         "[DEBUG] [robosign.stg] The notification request was met with response code 401",
