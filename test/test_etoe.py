@@ -159,7 +159,6 @@ def locate_config_with_simulate_coming_expiry(daysqant: int = 2000, password: st
 def test_etoe(cmdl, code, text) -> None:
     runner = CliRunner()
     result = runner.invoke(main, cmdl)
-    print(result.output)
     assert result.exit_code == code  # noqa: S101
     for indx in text:
         assert indx in result.output  # noqa: S101
