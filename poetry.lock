@@ -1018,8 +1018,8 @@ files = [
 [package.dependencies]
 PyYAML = "*"
 urllib3 = [
-    {version = "*", markers = "platform_python_implementation != \"PyPy\" and python_version >= \"3.10\""},
     {version = "<2", markers = "platform_python_implementation == \"PyPy\" or python_version < \"3.10\""},
+    {version = "*", markers = "platform_python_implementation != \"PyPy\" and python_version >= \"3.10\""},
 ]
 wrapt = "*"
 yarl = "*"
@@ -1236,4 +1236,4 @@ propcache = ">=0.2.0"
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8,<4"
-content-hash = "f1a6629584ae8a7f8df8ee6bf1860ef831d8d94dd632f5a40df28430956c7067"
+content-hash = "8f497955d9dc61caf529522d652d9223e47f46889e82759f0027233d4ed7ed7d"
