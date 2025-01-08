@@ -21,10 +21,13 @@ be used or replicated with the express permission of Red Hat, Inc.
 """
 
 
+import os
+
 import click
 
 from firmitas import __vers__, readconf
-from firmitas.base.maintool import gonotify, probedir
+from firmitas.base.maintool import generate, gonotify, probedir
+from firmitas.conf import logrdata, standard
 
 
 @click.command(name="firmitas")
@@ -43,5 +46,10 @@ def main(conffile=None):
         with open(conffile) as confobjc:
             exec(compile(confobjc.read(), conffile, "exec"), confdict)  # noqa : S102
         readconf(confdict)
+
+    if not os.path.exists(standard.hostloca):
+        logrdata.logrobjc.warning("Generating a new service hostname directory")
+        generate()
+
     probedir()
     gonotify()

@@ -71,10 +71,5 @@ def readconf(confobjc):
         )
         sys.exit(1)
 
-    if not os.path.exists(standard.hostloca):
-        logrdata.logrobjc.error(
-            "Please set the directory containing the service hostname map properly"
-        )
-        sys.exit(1)
-    else:
+    if os.path.exists(standard.hostloca):
         standard.certdict = yaml.safe_load(Path(standard.hostloca).read_text())
