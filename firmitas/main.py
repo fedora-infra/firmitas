@@ -48,7 +48,7 @@ def main(conffile=None):
         readconf(confdict)
 
     if not os.path.exists(standard.hostloca):
-        logrdata.logrobjc.warning("Generating a new service hostname directory")
+        logrdata.logrobjc.warning("Generating a new service hostname dictionary")
         generate()
 
     probedir()

@@ -41,7 +41,7 @@ def makenote(
 ):
     try:
         logrdata.logrobjc.debug(
-            f"[{servname}] Notification request attempt count - {retcount+1} of {standard.maxretry}"
+            f"[{servname.replace('.crt', '')}] Notification request attempt count - {retcount+1} of {standard.maxretry}"
         )
         rqstobjc = post(
             url=f"https://pagure.io/api/0/{standard.reponame}/new_issue",
@@ -65,12 +65,12 @@ def makenote(
             timeout=standard.rqsttime,
         )
         logrdata.logrobjc.debug(
-            f"[{servname}] The notification request was met with response code "
+            f"[{servname.replace('.crt', '')}] The notification request was met with response code "
             + f"{rqstobjc.status_code}"
         )
         if rqstobjc.status_code == 200:
             logrdata.logrobjc.debug(
-                f"[{servname}] The created notification ticket was created with ID "
+                f"[{servname.replace('.crt', '')}] The created notification ticket was created with ID "
                 + f"#{rqstobjc.json()['issue']['id']} ({rqstobjc.json()['issue']['full_url']})."
             )
             return (
@@ -82,6 +82,6 @@ def makenote(
             return False, "", ""
     except Exception as expt:
         logrdata.logrobjc.error(
-            f"[{servname}] The notification ticket could not be created - {expt}"
+            f"[{servname.replace('.crt', '')}] The notification ticket could not be created - {expt}"
         )
         return False, "", ""

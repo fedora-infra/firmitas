@@ -58,7 +58,7 @@ def generate():
     logrdata.logrobjc.info("Generating into the configured directory")
     doneqant, failqant, totlqant = 0, 0, 0
 
-    logrdata.logrobjc.info("Validating X.509-standard TLS certificates")
+    logrdata.logrobjc.info("Validating X.509-standard TLS certificate(s)")
     certloca = Path(standard.certloca)
 
     for file in certloca.iterdir():
@@ -89,7 +89,7 @@ def generate():
                 f"[{file.stem}] The specified X.509-standard TLS certificate was read successfully"
             )
             standard.certdict[file.name] = {
-                "path": file.as_posix(),
+                "path": file.name,
                 "user": standard.username,
                 "certstat": {
                     "strtdate": readdata[0],
@@ -115,6 +115,7 @@ def generate():
     )
 
     with open(standard.hostloca, "w") as yamlfile:
+        print(standard.hostloca, len(standard.certdict))
         yaml.safe_dump(standard.certdict, yamlfile)
 
 
@@ -122,11 +123,12 @@ def probedir():
     logrdata.logrobjc.info("Probing into the configured directory")
     doneqant, failqant, totlqant = 0, 0, 0
 
-    logrdata.logrobjc.info("Validating X.509-standard TLS certificates")
+    logrdata.logrobjc.info("Validating X.509-standard TLS certificate(s)")
+    print(standard.hostloca, len(standard.certdict))
     standard.certdict = yaml.safe_load(Path(standard.hostloca).read_text())
 
     for nameindx in standard.certdict:
-        certpath = Path(standard.certdict[nameindx]["path"])
+        certpath = Path(standard.certloca, standard.certdict[nameindx]["path"])
         totlqant += 1
 
         if not os.path.exists(certpath):
@@ -142,12 +144,12 @@ def probedir():
             readdata = readcert(certobjc)
         except ValueError:
             logrdata.logrobjc.error(
-                f"[{nameindx}] The specified X.509-standard TLS certificate could not be read"
+                f"[{nameindx.replace('.crt', '')}] The specified X.509-standard TLS certificate could not be read"
             )
             failqant += 1
         else:
             logrdata.logrobjc.info(
-                f"[{nameindx}] The specified X.509-standard TLS certificate was read successfully"
+                f"[{nameindx.replace('.crt', '')}] The specified X.509-standard TLS certificate was read successfully"
             )
             (
                 standard.certdict[nameindx]["certstat"]["strtdate"],
@@ -162,7 +164,7 @@ def probedir():
             doneqant += 1
 
     logrdata.logrobjc.info(
-        f"Of {totlqant} TLS certificates, {doneqant} TLS certificate(s) were read successfully "
+        f"Of {totlqant} TLS certificate(s), {doneqant} TLS certificate(s) were read successfully "
         + f"while {failqant} TLS certificate(s) could not be read"
     )
 
@@ -179,12 +181,12 @@ def gonotify():
                 if standard.certdict[certindx]["certstat"]["cstopped"]:
                     afstopcn += 1
                     logrdata.logrobjc.warning(
-                        f"[{certindx}] The specified X.509 TLS certificate is not valid anymore"
+                        f"[{certindx.replace('.crt', '')}] The specified X.509 TLS certificate is not valid anymore"
                     )
                 else:
                     if standard.certdict[certindx]["certstat"]["daystodd"] <= standard.daysqant:
                         logrdata.logrobjc.warning(
-                            f"[{certindx}] The specified X.509 TLS certificate is about to expire "
+                            f"[{certindx.replace('.crt', '')}] The specified X.509 TLS certificate is about to expire "
                             + f"in under {standard.daysqant} days from now"
                         )
                         if not standard.certdict[certindx]["notistat"]["done"]:
@@ -204,7 +206,7 @@ def gonotify():
                                 if rtrnobjc[0]:
                                     succqant += 1
                                     logrdata.logrobjc.info(
-                                        f"[{certindx}] The notification ticket for renewing the "
+                                        f"[{certindx.replace('.crt', '')}] The notification ticket for renewing the "
                                         + "TLS certificate has now been created"
                                     )
                                     standard.certdict[certindx]["notistat"]["done"] = rtrnobjc[0]
@@ -217,9 +219,9 @@ def gonotify():
                     f"[{certindx}] The specified X.509 TLS certificate is not valid yet"
                 )
         logrdata.logrobjc.info(
-            f"Of {totlqant} TLS certificates, {bfstrtcn} TLS certificate(s) were not valid "
-            + f"yet, {afstopcn} TLS certificates were not valid anymore and {succqant} TLS "
-            + "certificates were notified of being near their validity expiry"
+            f"Of {totlqant} TLS certificate(s), {bfstrtcn} TLS certificate(s) were not valid "
+            + f"yet, {afstopcn} TLS certificate(s) were not valid anymore and {succqant} TLS "
+            + "certificate(s) were notified of being near their validity expiry"
         )
         with open(standard.hostloca, "w") as yamlfile:
             yaml.safe_dump(standard.certdict, yamlfile)
