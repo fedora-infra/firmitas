@@ -26,6 +26,7 @@ import os
 import click
 
 from firmitas import __vers__, readconf
+from firmitas.base.difftool import Difference
 from firmitas.base.maintool import generate, gonotify, probedir
 from firmitas.conf import logrdata, standard
 
@@ -50,6 +51,10 @@ def main(conffile=None):
     if not os.path.exists(standard.hostloca):
         logrdata.logrobjc.warning("Generating a new service hostname dictionary")
         generate()
+    else:
+        logrdata.logrobjc.warning("Comparing to confirm if the entries are updated")
+        diff = Difference()
+        diff.action()
 
     probedir()
     gonotify()
