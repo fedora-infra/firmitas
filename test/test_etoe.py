@@ -31,15 +31,16 @@ from click.testing import CliRunner
 
 from firmitas.main import main
 from test import (
-    list_etoe_auth,
+    list_etoe_auth_with_config,
     list_etoe_github,
     list_etoe_gitlab,
-    list_etoe_nope,
-    list_etoe_pagure,
+    list_etoe_nope_with_config,
+    list_etoe_pagure_with_config, standard_list, list_etoe_pagure_without_config, list_etoe_auth_without_config,
+    list_etoe_nope_without_config,
 )
 
 
-def locate_config(gitforge: str = "pagure") -> str:
+def locate_config_with_population(gitforge: str = "pagure", noconfig: bool = False) -> str:
     """
     Create a makeshift configuration file for specific testing purposes
     """
@@ -88,7 +89,8 @@ def locate_config(gitforge: str = "pagure") -> str:
 
     # Copy over the certificate listing file to the temporary working directory
     # while making necessary changes to the certificate listing file
-    copyfile(base_certlist_location, test_certlist_location)
+    if not noconfig:
+        copyfile(base_certlist_location, test_certlist_location)
 
     # Copy over the specific certificates required for the testing purposes from
     # the source location to the destination location
@@ -96,15 +98,16 @@ def locate_config(gitforge: str = "pagure") -> str:
         copyfile(base_testcert_localist[indx], test_testcert_localist[indx])
 
     # Return the location of the newly created configuration file
+    print("HOEEEEEEEEEEEEEEEE", test_standard_location, test_certlist_location)
     return test_standard_location
 
 
-def locate_config_with_simulate_coming_expiry(daysqant: int = 2000, password: str = envr["FIRMITAS_TEST_PASSWORD"]) -> str:  # noqa : E501
+def locate_config_with_simulate_coming_expiry(daysqant: int = 2000, password: str = envr["FIRMITAS_TEST_PASSWORD"], noconfig: bool = False) -> str:  # noqa : E501
     """
     Make specific changes to the standard configuration file to invoke a certain condition
     """
 
-    test_standard_location = locate_config()
+    test_standard_location = locate_config_with_population(noconfig=noconfig)
     with open(test_standard_location) as test_standard_file:
         test_standard_data = test_standard_file.read().replace(
             "daysqant = 30", f"daysqant = {daysqant}"
@@ -125,40 +128,71 @@ def locate_config_with_simulate_coming_expiry(daysqant: int = 2000, password: st
     "cmdl, code, text",
     [
         pytest.param(
-            f"--conffile {locate_config()}",
+            f"--conffile {locate_config_with_population('pagure', False)}",
             0,
-            list_etoe_pagure(),
-            id = "Standard and mistaken certificates - Pagure",
+            list_etoe_pagure_with_config(),
+            id = "Standard and mistaken certificates with config - Pagure",
         ),
         pytest.param(
-            f"--conffile {locate_config('gitlab')}",
+            f"--conffile {locate_config_with_population('gitlab', False)}",
             1,
             list_etoe_gitlab(),
-            id="Standard and mistaken certificates - GitLab",
+            id="Standard and mistaken certificates with config - GitLab",
         ),
         pytest.param(
-            f"--conffile {locate_config('github')}",
+            f"--conffile {locate_config_with_population('github', False)}",
             1,
             list_etoe_github(),
-            id="Standard and mistaken certificates - GitHub",
+            id="Standard and mistaken certificates with config - GitHub",
         ),
         pytest.param(
-            f"--conffile {locate_config_with_simulate_coming_expiry()}",
+            f"--conffile {locate_config_with_simulate_coming_expiry(2000, envr["FIRMITAS_TEST_PASSWORD"], False)}",
             0,
-            list_etoe_auth(),
-            id="Invoke notifications with accurate password",
+            list_etoe_auth_with_config(),
+            id="Invoke notifications with accurate password with config",
         ),
         pytest.param(
-            f"--conffile {locate_config_with_simulate_coming_expiry(password='MISTAKEN')}",  # noqa : S106
+            f"--conffile {locate_config_with_simulate_coming_expiry(2000, 'MISTAKEN', False)}",  # noqa : S106
             0,
-            list_etoe_nope(),
-            id="Invoke notifications with mistaken password",
-        )
+            list_etoe_nope_with_config(),
+            id="Invoke notifications with mistaken password with config",
+        ),
+        pytest.param(
+            f"--conffile {locate_config_with_population('pagure', True)}",
+            0,
+            list_etoe_pagure_without_config(),
+            id="Standard and mistaken certificates without config - Pagure",
+        ),
+        # pytest.param(
+        #     f"--conffile {locate_config_with_population('gitlab', True)}",
+        #     1,
+        #     list_etoe_gitlab(),
+        #     id="Standard and mistaken certificates without config - GitLab",
+        # ),
+        # pytest.param(
+        #     f"--conffile {locate_config_with_population('github', True)}",
+        #     1,
+        #     list_etoe_github(),
+        #     id="Standard and mistaken certificates without config - GitHub",
+        # ),
+        # pytest.param(
+        #     f"--conffile {locate_config_with_simulate_coming_expiry(2000, envr["FIRMITAS_TEST_PASSWORD"], True)}",
+        #     0,
+        #     list_etoe_auth_without_config(),
+        #     id="Invoke notifications with accurate password without config",
+        # ),
+        # pytest.param(
+        #     f"--conffile {locate_config_with_simulate_coming_expiry(2000, 'MISTAKEN', True)}",  # noqa : S106
+        #     0,
+        #     list_etoe_nope_without_config(),
+        #     id="Invoke notifications with mistaken password without config",
+        # ),
     ]
 )
 def test_etoe(cmdl, code, text) -> None:
     runner = CliRunner()
     result = runner.invoke(main, cmdl)
+    _ = [print(indx) for indx in result.output.split("\n")]
     assert result.exit_code == code  # noqa: S101
     for indx in text:
         assert indx in result.output  # noqa: S101
