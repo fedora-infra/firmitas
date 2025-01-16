@@ -54,49 +54,118 @@ def readcert(certobjc):
     return strtdate, stopdate, cstarted, cstopped, daystobt, daystodd, issuauth, serialno
 
 
-def probedir():
-    logrdata.logrobjc.info("Probing into the configured directory")
+def generate():
+    logrdata.logrobjc.info("Generating into the configured directory")
     doneqant, failqant, totlqant = 0, 0, 0
-    standard.certdict = yaml.safe_load(Path(standard.hostloca).read_text())
-    logrdata.logrobjc.info(
-        f"Validating {len(standard.certdict)} X.509-standard TLS certificates"
-    )
-    for nameindx in standard.certdict:
+
+    logrdata.logrobjc.info("Validating X.509-standard TLS certificate(s)")
+    certloca = Path(standard.certloca)
+
+    for file in certloca.iterdir():
+        if not file.is_file() or ".crt" != file.suffix:
+            continue
+
+        certpath = Path(file.as_posix())
         totlqant += 1
-        certpath = Path(standard.certloca, standard.certdict[nameindx]["path"])
-        if os.path.exists(certpath):
-            try:
-                certobjc = x509.load_pem_x509_certificate(certpath.read_bytes(), default_backend())
-                (
-                    standard.certdict[nameindx]["certstat"]["strtdate"],
-                    standard.certdict[nameindx]["certstat"]["stopdate"],
-                    standard.certdict[nameindx]["certstat"]["cstarted"],
-                    standard.certdict[nameindx]["certstat"]["cstopped"],
-                    standard.certdict[nameindx]["certstat"]["daystobt"],
-                    standard.certdict[nameindx]["certstat"]["daystodd"],
-                    standard.certdict[nameindx]["certstat"]["issuauth"],
-                    standard.certdict[nameindx]["certstat"]["serialno"],
-                ) = readcert(certobjc)
-                doneqant += 1
-                logrdata.logrobjc.info(
-                    f"[{nameindx}] The specified X.509-standard TLS certificate was read "
-                    + "successfully"
-                )
-            except ValueError:
-                failqant += 1
-                logrdata.logrobjc.error(
-                    f"[{nameindx}] The specified X.509-standard TLS certificate could not be read"
-                )
-        else:
-            failqant += 1
+
+        if not os.path.exists(certpath):
             logrdata.logrobjc.warning(
-                f"[{nameindx}] The specified X.509-standard TLS certificate could not "
+                f"[{file.stem}] The specified X.509-standard TLS certificate could not "
                 + "be located"
             )
+            failqant += 1
+            continue
+
+        try:
+            certobjc = x509.load_pem_x509_certificate(certpath.read_bytes(), default_backend())
+            readdata = readcert(certobjc)
+        except ValueError:
+            logrdata.logrobjc.error(
+                f"[{file.stem}] The specified X.509-standard TLS certificate could not be read"
+            )
+            failqant += 1
+        else:
+            logrdata.logrobjc.info(
+                f"[{file.stem}] The specified X.509-standard TLS certificate was read successfully"
+            )
+            standard.certdict[file.stem] = {
+                "path": file.name,
+                "user": standard.username,
+                "certstat": {
+                    "strtdate": readdata[0],
+                    "stopdate": readdata[1],
+                    "cstarted": readdata[2],
+                    "cstopped": readdata[3],
+                    "daystobt": readdata[4],
+                    "daystodd": readdata[5],
+                    "issuauth": readdata[6],
+                    "serialno": readdata[7],
+                },
+                "notistat": {
+                    "done": False,
+                    "link": "",
+                    "time": "",
+                }
+            }
+            doneqant += 1
+
     logrdata.logrobjc.info(
         f"Of {totlqant} TLS certificates, {doneqant} TLS certificate(s) were read successfully "
         + f"while {failqant} TLS certificate(s) could not be read"
     )
+
+    with open(standard.hostloca, "w") as yamlfile:
+        yaml.safe_dump(standard.certdict, yamlfile)
+
+
+def probedir():
+    logrdata.logrobjc.info("Probing into the configured directory")
+    doneqant, failqant, totlqant = 0, 0, 0
+
+    logrdata.logrobjc.info("Validating X.509-standard TLS certificate(s)")
+    standard.certdict = yaml.safe_load(Path(standard.hostloca).read_text())
+
+    for nameindx in standard.certdict:
+        certpath = Path(standard.certloca, standard.certdict[nameindx]["path"])
+        totlqant += 1
+
+        if not os.path.exists(certpath):
+            logrdata.logrobjc.warning(
+                f"[{nameindx}] The specified X.509-standard TLS certificate could not "
+                + "be located"
+            )
+            failqant += 1
+            continue
+
+        try:
+            certobjc = x509.load_pem_x509_certificate(certpath.read_bytes(), default_backend())
+            readdata = readcert(certobjc)
+        except ValueError:
+            logrdata.logrobjc.error(
+                f"[{nameindx}] The specified X.509-standard TLS certificate could not be read"
+            )
+            failqant += 1
+        else:
+            logrdata.logrobjc.info(
+                f"[{nameindx}] The specified X.509-standard TLS certificate was read successfully"
+            )
+            (
+                standard.certdict[nameindx]["certstat"]["strtdate"],
+                standard.certdict[nameindx]["certstat"]["stopdate"],
+                standard.certdict[nameindx]["certstat"]["cstarted"],
+                standard.certdict[nameindx]["certstat"]["cstopped"],
+                standard.certdict[nameindx]["certstat"]["daystobt"],
+                standard.certdict[nameindx]["certstat"]["daystodd"],
+                standard.certdict[nameindx]["certstat"]["issuauth"],
+                standard.certdict[nameindx]["certstat"]["serialno"],
+            ) = readdata
+            doneqant += 1
+
+    logrdata.logrobjc.info(
+        f"Of {totlqant} TLS certificate(s), {doneqant} TLS certificate(s) were read successfully "
+        + f"while {failqant} TLS certificate(s) could not be read"
+    )
+
     with open(standard.hostloca, "w") as yamlfile:
         yaml.safe_dump(standard.certdict, yamlfile)
 
@@ -148,9 +217,9 @@ def gonotify():
                     f"[{certindx}] The specified X.509 TLS certificate is not valid yet"
                 )
         logrdata.logrobjc.info(
-            f"Of {totlqant} TLS certificates, {bfstrtcn} TLS certificate(s) were not valid "
-            + f"yet, {afstopcn} TLS certificates were not valid anymore and {succqant} TLS "
-            + "certificates were notified of being near their validity expiry"
+            f"Of {totlqant} TLS certificate(s), {bfstrtcn} TLS certificate(s) were not valid "
+            + f"yet, {afstopcn} TLS certificate(s) were not valid anymore and {succqant} TLS "
+            + "certificate(s) were notified of being near their validity expiry"
         )
         with open(standard.hostloca, "w") as yamlfile:
             yaml.safe_dump(standard.certdict, yamlfile)
