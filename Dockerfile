@@ -11,7 +11,7 @@ ADD download_certificates.sh /etc/firmitas/download_certificates.sh
 
 RUN dnf -y install gcc python3-devel python3-pip libffi-devel
 RUN dnf -y clean all
-RUN pip3 install --upgrade firmitas==0.1.3a0
+RUN pip3 install --upgrade firmitas==0.1.5a0
 RUN dnf -y remove gcc python3-devel
 
 ENV FIRMITAS_CONFIG=/etc/firmitas/conf/myconfig.py
