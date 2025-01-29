@@ -38,7 +38,7 @@ def readcert(certobjc):
     commname = certobjc.subject.rfc4514_string().split("=")[1]
     issuauth = certobjc.issuer.rfc4514_string().split("=")[1]
     serialno = certobjc.serial_number
-    strtdate, stopdate = certobjc.not_valid_before, certobjc.not_valid_after
+    strtdate, stopdate = certobjc.not_valid_before_utc, certobjc.not_valid_after_utc
     daystobt, daystodd = (strtdate - datetime.now()).days, (stopdate - datetime.now()).days
     cstarted, cstopped = False if daystobt >= 0 else True, False if daystodd >= 0 else True
     logrdata.logrobjc.debug(f"[{commname}] Issued by {issuauth}")
