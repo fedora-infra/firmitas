@@ -110,7 +110,7 @@ def generate():
             doneqant += 1
 
     logrdata.logrobjc.info(
-        f"Of {totlqant} TLS certificates, {doneqant} TLS certificate(s) were read successfully "
+        f"Of {totlqant} TLS certificate(s), {doneqant} TLS certificate(s) were read successfully "
         + f"while {failqant} TLS certificate(s) could not be read"
     )
 

@@ -25,7 +25,7 @@ from os import environ as envr
 
 standard_list = [
     "[INFO] Probing into the configured directory",
-    "[INFO] Validating 6 X.509-standard TLS certificates",
+    "[INFO] Validating X.509-standard TLS certificate(s)",
     "[DEBUG] [joystick.stg] Issued by RabbitMQ STAGING CA",
     "[DEBUG] [joystick.stg] Serial number 44541479035547978831580614561088909678",
     "[DEBUG] [joystick.stg] Valid from 2019-05-28 23:04:35",
@@ -47,14 +47,14 @@ standard_list = [
     "[DEBUG] [waiverdb.stg] Valid until 2029-03-03 23:58:40",
     "[INFO] [waiverdb.stg] The specified X.509-standard TLS certificate was read successfully",  # noqa : E501
     "[ERROR] [mistaken.stg] The specified X.509-standard TLS certificate could not be read",  # noqa : E501
-    "[INFO] Of 6 TLS certificates, 5 TLS certificate(s) were read successfully while 1 TLS certificate(s) could not be read",  # noqa : E501
+    "[INFO] Of 6 TLS certificate(s), 5 TLS certificate(s) were read successfully while 1 TLS certificate(s) could not be read",  # noqa : E501
 ]
 
 
 def list_etoe_pagure(list_etoe: list = standard_list.copy()) -> list:  # noqa : B008
     list_etoe += [
         "[WARNING] [dtfedmsg.stg] The specified X.509 TLS certificate is not valid anymore",
-        "[INFO] Of 6 TLS certificates, 1 TLS certificate(s) were not valid yet, 1 TLS certificates were not valid anymore and 0 TLS certificates were notified of being near their validity expiry",  # noqa : E501
+        "[INFO] Of 6 TLS certificate(s), 1 TLS certificate(s) were not valid yet, 1 TLS certificate(s) were not valid anymore and 0 TLS certificate(s) were notified of being near their validity expiry",  # noqa : E501
     ]
     return list_etoe
 
@@ -103,7 +103,7 @@ def list_etoe_auth(list_etoe: list = standard_list.copy()) -> list:  # noqa : B0
         "[DEBUG] [waiverdb.stg] The notification request was met with response code 200",
         "[DEBUG] [waiverdb.stg] The created notification ticket was created with ID",
         "[INFO] [waiverdb.stg] The notification ticket for renewing the TLS certificate has now been created",  # noqa : E501
-        "[INFO] Of 6 TLS certificates, 1 TLS certificate(s) were not valid yet, 1 TLS certificates were not valid anymore and 4 TLS certificates were notified of being near their validity expiry",  # noqa : E501
+        "[INFO] Of 6 TLS certificate(s), 1 TLS certificate(s) were not valid yet, 1 TLS certificate(s) were not valid anymore and 4 TLS certificate(s) were notified of being near their validity expiry",  # noqa : E501
     ]
     return list_etoe
 
@@ -141,6 +141,6 @@ def list_etoe_nope(list_etoe: list = standard_list.copy()) -> list:  # noqa : B0
         "[WARNING] [nuancier.stg] The specified X.509 TLS certificate is about to expire in under",
         "[WARNING] [robosign.stg] The specified X.509 TLS certificate is about to expire in under",
         "[WARNING] [waiverdb.stg] The specified X.509 TLS certificate is about to expire in under",
-        "[INFO] Of 6 TLS certificates, 1 TLS certificate(s) were not valid yet, 1 TLS certificates were not valid anymore and 0 TLS certificates were notified of being near their validity expiry"  # noqa : E501
+        "[INFO] Of 6 TLS certificate(s), 1 TLS certificate(s) were not valid yet, 1 TLS certificate(s) were not valid anymore and 0 TLS certificate(s) were notified of being near their validity expiry"  # noqa : E501
     ]
     return list_etoe

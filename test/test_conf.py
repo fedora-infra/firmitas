@@ -172,9 +172,9 @@ def locate_config_hostname() -> str:
             [
                 "[INFO] Probing into the configured directory",
                 "[INFO] Validating",
-                "X.509-standard TLS certificates",
+                "X.509-standard TLS certificate(s)",
                 "[INFO] Of",
-                "TLS certificates,",
+                "TLS certificate(s),",
                 "TLS certificate(s) were read successfully while",
                 "TLS certificate(s) could not be read",
             ],
@@ -218,10 +218,9 @@ def locate_config_hostname() -> str:
         ),
         pytest.param(
             f"--conffile {locate_config_hostname()}",
-            1,
+            0,
             [
-                "[ERROR] Please set the directory containing",
-                "the service hostname map properly",
+                "[WARNING] Generating a new service hostname dictionary",
             ],
             id="Configuration - Unavailable hostfile",
         ),
