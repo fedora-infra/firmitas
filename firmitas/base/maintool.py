@@ -23,7 +23,7 @@ be used or replicated with the express permission of Red Hat, Inc.
 
 import os
 import sys
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 
 import yaml
@@ -38,8 +38,9 @@ def readcert(certobjc):
     commname = certobjc.subject.rfc4514_string().split("=")[1]
     issuauth = certobjc.issuer.rfc4514_string().split("=")[1]
     serialno = certobjc.serial_number
-    strtdate, stopdate = certobjc.not_valid_before, certobjc.not_valid_after
-    daystobt, daystodd = (strtdate - datetime.now()).days, (stopdate - datetime.now()).days
+    heretime = datetime.now(timezone.utc)
+    strtdate, stopdate = certobjc.not_valid_before_utc, certobjc.not_valid_after_utc
+    daystobt, daystodd = (strtdate - heretime).days, (stopdate - heretime).days
     cstarted, cstopped = False if daystobt >= 0 else True, False if daystodd >= 0 else True
     logrdata.logrobjc.debug(f"[{commname}] Issued by {issuauth}")
     logrdata.logrobjc.debug(f"[{commname}] Serial number {serialno}")
