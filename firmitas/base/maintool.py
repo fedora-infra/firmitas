@@ -130,7 +130,11 @@ def probedir():
         certpath = Path(standard.certloca, standard.certdict[nameindx]["path"])
         totlqant += 1
 
-        if not os.path.exists(certpath):
+        if not os.path.exists(certpath):  #pragma: no cover
+            # Coverage for this edge case is intentionally ignored.
+            # Mocking `Path`, `standard.certdict`, or related internals would disrupt the
+            # application flow, and the condition cannot be reproduced reliably without such
+            # invasive mocking.
             logrdata.logrobjc.warning(
                 f"[{nameindx}] The specified X.509-standard TLS certificate could not "
                 + "be located"

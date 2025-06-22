@@ -47,14 +47,38 @@ standard_list = [
     "[DEBUG] [waiverdb.stg] Valid until 2029-03-03 23:58:40",
     "[INFO] [waiverdb.stg] The specified X.509-standard TLS certificate was read successfully",  # noqa : E501
     "[ERROR] [mistaken.stg] The specified X.509-standard TLS certificate could not be read",  # noqa : E501
-    "[INFO] Of 6 TLS certificate(s), 5 TLS certificate(s) were read successfully while 1 TLS certificate(s) could not be read",  # noqa : E501
+    "[INFO] Of 7 TLS certificate(s), 6 TLS certificate(s) were read successfully while 1 TLS certificate(s) could not be read",  # noqa : E501
+]
+
+diff_insert_list = [
+    "[WARNING] Comparing to confirm if the entries are updated",
+    "[WARNING] Inserting 1 certificate(s) that are now tracked",
+    "[DEBUG] [fedora-messaging.stg] Issued by RabbitMQ STAGING CA",
+    "[DEBUG] [fedora-messaging.stg] Serial number 98302842754396829200843959309422717252",
+    "[DEBUG] [fedora-messaging.stg] Valid from 2019-02-21 18:33:54+00:00",  # noqa : E501
+    "[DEBUG] [fedora-messaging.stg] Valid until 2029-02-18 18:33:54+00:00",  # noqa : E501
+    "[INFO] [fedora-messaging.stg] The specified X.509-standard TLS certificate was read successfully",  # noqa : E501
+]
+
+gen_edge_list = [
+    "[WARNING] Generating a new service hostname dictionary",
+    "[INFO] Generating into the configured directory",
+    "[INFO] Validating X.509-standard TLS certificate(s)",
+    "[WARNING] [fedora-messaging.stg] The specified X.509-standard TLS certificate could not be located",  # noqa : E501
+    "[WARNING] [robosign.stg] The specified X.509-standard TLS certificate could not be located",
+    "[WARNING] [waiverdb.stg] The specified X.509-standard TLS certificate could not be located",
+    "[WARNING] [nuancier.stg] The specified X.509-standard TLS certificate could not be located",
+    "[WARNING] [joystick.stg] The specified X.509-standard TLS certificate could not be located",
+    "[WARNING] [mistaken.stg] The specified X.509-standard TLS certificate could not be located",
+    "[WARNING] [dtfedmsg.stg] The specified X.509-standard TLS certificate could not be located",
+    "[INFO] Of 7 TLS certificate(s), 0 TLS certificate(s) were read successfully while 7 TLS certificate(s) could not be read",  # noqa : E501
 ]
 
 
-def list_etoe_pagure(list_etoe: list = standard_list.copy()) -> list:  # noqa : B008
+def list_etoe_pagure(list_etoe: list = diff_insert_list + standard_list.copy()) -> list:  # noqa : B008
     list_etoe += [
         "[WARNING] [dtfedmsg.stg] The specified X.509 TLS certificate is not valid anymore",
-        "[INFO] Of 6 TLS certificate(s), 1 TLS certificate(s) were not valid yet, 1 TLS certificate(s) were not valid anymore and 0 TLS certificate(s) were notified of being near their validity expiry",  # noqa : E501
+        "[INFO] Of 7 TLS certificate(s), 1 TLS certificate(s) were not valid yet, 1 TLS certificate(s) were not valid anymore and 0 TLS certificate(s) were notified of being near their validity expiry",  # noqa : E501
     ]
     return list_etoe
 
@@ -73,8 +97,15 @@ def list_etoe_github(list_etoe: list = standard_list.copy()) -> list:  # noqa : 
     return list_etoe
 
 
-def list_etoe_auth(list_etoe: list = standard_list.copy()) -> list:  # noqa : B008
+def list_etoe_auth(list_etoe: list = diff_insert_list + standard_list.copy()) -> list:  # noqa : B008
     list_etoe += [
+        "[WARNING] [fedora-messaging.stg] The specified X.509 TLS certificate is about to expire in under",  # noqa : E501
+        "[DEBUG] [fedora-messaging.stg] Notification request attempt count - 1 of 5",
+        "[DEBUG] Starting new HTTPS connection (1): pagure.io:443",
+        f"[DEBUG] https://pagure.io:443 \"POST /api/0/{envr['FIRMITAS_TEST_REPONAME']}/new_issue HTTP/",  # noqa : E501
+        "[DEBUG] [fedora-messaging.stg] The notification request was met with response code 200",
+        "[DEBUG] [fedora-messaging.stg] The created notification ticket was created with ID",
+        "[INFO] [fedora-messaging.stg] The notification ticket for renewing the TLS certificate has now been created",  # noqa : E501
         "[WARNING] [joystick.stg] The specified X.509 TLS certificate is about to expire in under",  # noqa : E501
         "[DEBUG] [joystick.stg] Notification request attempt count - 1 of 5",
         "[DEBUG] Starting new HTTPS connection (1): pagure.io:443",
@@ -103,12 +134,12 @@ def list_etoe_auth(list_etoe: list = standard_list.copy()) -> list:  # noqa : B0
         "[DEBUG] [waiverdb.stg] The notification request was met with response code 200",
         "[DEBUG] [waiverdb.stg] The created notification ticket was created with ID",
         "[INFO] [waiverdb.stg] The notification ticket for renewing the TLS certificate has now been created",  # noqa : E501
-        "[INFO] Of 6 TLS certificate(s), 1 TLS certificate(s) were not valid yet, 1 TLS certificate(s) were not valid anymore and 4 TLS certificate(s) were notified of being near their validity expiry",  # noqa : E501
+        "[INFO] Of 7 TLS certificate(s), 1 TLS certificate(s) were not valid yet, 1 TLS certificate(s) were not valid anymore and 5 TLS certificate(s) were notified of being near their validity expiry",  # noqa : E501
     ]
     return list_etoe
 
 
-def list_etoe_nope(list_etoe: list = standard_list.copy()) -> list:  # noqa : B008
+def list_etoe_nope(list_etoe: list = diff_insert_list + standard_list.copy()) -> list:  # noqa : B008
     list_etoe += [
         "[WARNING] [joystick.stg] The specified X.509 TLS certificate is about to expire in under",
         "[DEBUG] [joystick.stg] Notification request attempt count - 1 of 5",
@@ -131,16 +162,35 @@ def list_etoe_nope(list_etoe: list = standard_list.copy()) -> list:  # noqa : B0
         "[DEBUG] [waiverdb.stg] Notification request attempt count - 3 of 5",
         "[DEBUG] [waiverdb.stg] Notification request attempt count - 4 of 5",
         "[DEBUG] [waiverdb.stg] Notification request attempt count - 5 of 5",
+        "[DEBUG] [fedora-messaging.stg] Notification request attempt count - 1 of 5",
+        "[DEBUG] [fedora-messaging.stg] Notification request attempt count - 2 of 5",
+        "[DEBUG] [fedora-messaging.stg] Notification request attempt count - 3 of 5",
+        "[DEBUG] [fedora-messaging.stg] Notification request attempt count - 4 of 5",
+        "[DEBUG] [fedora-messaging.stg] Notification request attempt count - 5 of 5",
         "[DEBUG] Starting new HTTPS connection (1): pagure.io:443",
         f"[DEBUG] https://pagure.io:443 \"POST /api/0/{envr['FIRMITAS_TEST_REPONAME']}/new_issue HTTP/",  # noqa : E501
         "[DEBUG] [joystick.stg] The notification request was met with response code 401",
         "[DEBUG] [nuancier.stg] The notification request was met with response code 401",
         "[DEBUG] [robosign.stg] The notification request was met with response code 401",
         "[DEBUG] [waiverdb.stg] The notification request was met with response code 401",
+        "[DEBUG] [fedora-messaging.stg] The notification request was met with response code 401",
         "[WARNING] [mistaken.stg] The specified X.509 TLS certificate is not valid yet",
         "[WARNING] [nuancier.stg] The specified X.509 TLS certificate is about to expire in under",
         "[WARNING] [robosign.stg] The specified X.509 TLS certificate is about to expire in under",
-        "[WARNING] [waiverdb.stg] The specified X.509 TLS certificate is about to expire in under",
-        "[INFO] Of 6 TLS certificate(s), 1 TLS certificate(s) were not valid yet, 1 TLS certificate(s) were not valid anymore and 0 TLS certificate(s) were notified of being near their validity expiry"  # noqa : E501
+        "[WARNING] [fedora-messaging.stg] The specified X.509 TLS certificate is about to expire in under",  # noqa : E501
+        "[INFO] Of 7 TLS certificate(s), 1 TLS certificate(s) were not valid yet, 1 TLS certificate(s) were not valid anymore and 0 TLS certificate(s) were notified of being near their validity expiry"  # noqa : E501
     ]
+    return list_etoe
+
+
+def list_etoe_generate(list_etoe: list = standard_list.copy()) -> list:  # noqa : B008
+    list_etoe += [
+        "[WARNING] Generating a new service hostname dictionary",
+        "[INFO] Generating into the configured directory"
+    ]
+    return list_etoe
+
+
+def list_etoe_generate_edge(list_etoe: list = gen_edge_list + standard_list.copy()) -> list:  # noqa : B008
+    list_etoe.pop(-1)
     return list_etoe
