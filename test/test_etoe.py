@@ -22,16 +22,21 @@ be used or replicated with the express permission of Red Hat, Inc.
 
 
 from os import environ as envr
-from os import makedirs, path
+from os import makedirs, path, remove
+from pathlib import Path
 from secrets import token_hex
 from shutil import copyfile, rmtree
 
 import pytest
 from click.testing import CliRunner
+from cryptography import x509
+from pytest_mock import MockerFixture
 
 from firmitas.main import main
 from test import (
     list_etoe_auth,
+    list_etoe_generate,
+    list_etoe_generate_edge,
     list_etoe_github,
     list_etoe_gitlab,
     list_etoe_nope,
@@ -46,11 +51,12 @@ def locate_config(gitforge: str = "pagure") -> str:
 
     namelist = [
         "dtfedmsg.stg.crt",
+        "fedora-messaging.stg.crt",
         "joystick.stg.crt",
         "mistaken.stg.crt",
         "nuancier.stg.crt",
         "robosign.stg.crt",
-        "waiverdb.stg.crt"
+        "waiverdb.stg.crt",
     ]
 
     # Generate an unpredictably random hexadecimal
@@ -120,6 +126,17 @@ def locate_config_with_simulate_coming_expiry(daysqant: int = 2000, password: st
     return test_standard_location
 
 
+def locate_config_with_simulate_no_certlist() -> str:
+    """
+    Make specific changes to the standard configuration file to invoke a certain condition.
+    Removes the `certlist.yml` file.
+    """
+
+    test_standard_location = locate_config()
+    remove(test_standard_location.replace("myconfig.py", "certlist.yml"))
+    return test_standard_location
+
+
 @pytest.mark.vcr(filter_headers=["Authorization"])
 @pytest.mark.parametrize(
     "cmdl, code, text",
@@ -153,10 +170,77 @@ def locate_config_with_simulate_coming_expiry(daysqant: int = 2000, password: st
             0,
             list_etoe_nope(),
             id="Invoke notifications with mistaken password",
+        ),
+        pytest.param(
+            f"--conffile {locate_config_with_simulate_no_certlist()}",
+            0,
+            list_etoe_generate(),
+            id="Standard and mistaken certificates - No certificate list",
         )
     ]
 )
 def test_etoe(cmdl, code, text) -> None:
+    runner = CliRunner()
+    result = runner.invoke(main, cmdl)
+    assert result.exit_code == code  # noqa: S101
+    for indx in text:
+        assert indx in result.output  # noqa: S101
+    folder_location = cmdl.split(" ")[1].replace("/myconfig.py", "")
+    rmtree(folder_location)
+
+
+@pytest.mark.vcr(filter_headers=["Authorization"])
+@pytest.mark.parametrize(
+    "cmdl, code, text",
+    [
+        pytest.param(
+            f"--conffile {locate_config()}",
+            0,
+            "The specified X.509-standard TLS certificate could not be read",
+            id = "Invalid certificates",
+        )
+    ]
+)
+def test_etoe_invalid_cert(cmdl, code, text, mocker: MockerFixture) -> None:
+    """
+    Tests the flow if code if certificate(s) are invalid
+    """
+
+    # Perform the action of mocking `x509.load_pem_x509_certificate`
+    mocker.patch.object(x509, "load_pem_x509_certificate", side_effect=ValueError)
+
+    runner = CliRunner()
+    result = runner.invoke(main, cmdl)
+    assert result.exit_code == code  # noqa: S101
+    assert text in result.output  # noqa: S101
+    folder_location = cmdl.split(" ")[1].replace("/myconfig.py", "")
+    rmtree(folder_location)
+
+
+@pytest.mark.vcr(filter_headers=["Authorization"])
+@pytest.mark.parametrize(
+    "cmdl, code, text",
+    [
+        pytest.param(
+            f"--conffile {locate_config_with_simulate_no_certlist()}",
+            0,
+            list_etoe_generate_edge(),
+            id = "Standard and mistaken certificates - Edge cases",
+        )
+    ]
+)
+def test_etoe_generate_edge_case(cmdl, code, text, mocker: MockerFixture) -> None:
+    """
+    Tests the flow of code for the edge cases of the `generate` function
+    """
+
+    #Make a directory with `.crt` extension
+    invalid_file = cmdl.split(" ")[1].replace("/myconfig.py", "")
+    makedirs(f"{invalid_file}/certificates/ZEROEXISTENT.crt")
+
+    #Perform the action of mocking `Path.as_posix`
+    mocker.patch.object(Path, "as_posix", return_value="ZEROEXISTENT")
+
     runner = CliRunner()
     result = runner.invoke(main, cmdl)
     assert result.exit_code == code  # noqa: S101
