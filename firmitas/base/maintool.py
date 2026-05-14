@@ -1,6 +1,6 @@
 """
 Firmitas
-Copyright (C) 2023-2024 Akashdeep Dhar
+Copyright (C) 2023-2026 Akashdeep Dhar
 
 This program is free software: you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software
@@ -22,7 +22,6 @@ be used or replicated with the express permission of Red Hat, Inc.
 
 
 import os
-import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -31,7 +30,7 @@ from cryptography import x509
 from cryptography.hazmat.backends import default_backend
 
 from firmitas.conf import logrdata, standard
-from firmitas.unit import gopagure
+from firmitas.unit import forgejo
 
 
 def readcert(certobjc):
@@ -177,60 +176,53 @@ def probedir():
 
 def gonotify():
     bfstrtcn, afstopcn, totlqant, succqant = 0, 0, 0, 0
-    if standard.gitforge == "pagure":
-        for certindx in standard.certdict:
-            totlqant += 1
-            if standard.certdict[certindx]["certstat"]["cstarted"]:
-                if standard.certdict[certindx]["certstat"]["cstopped"]:
-                    afstopcn += 1
-                    logrdata.logrobjc.warning(
-                        f"[{certindx}] The specified X.509 TLS certificate is not valid anymore"
-                    )
-                else:
-                    if standard.certdict[certindx]["certstat"]["daystodd"] <= standard.daysqant:
-                        logrdata.logrobjc.warning(
-                            f"[{certindx}] The specified X.509 TLS certificate is about to expire "
-                            + f"in under {standard.daysqant} days from now"
-                        )
-                        if not standard.certdict[certindx]["notistat"]["done"]:
-                            for retcount in range(standard.maxretry):
-                                rtrnobjc = gopagure.makenote(
-                                    retcount=retcount,
-                                    servname=certindx,
-                                    strtdate=standard.certdict[certindx]["certstat"]["strtdate"],
-                                    stopdate=standard.certdict[certindx]["certstat"]["stopdate"],
-                                    daystobt=standard.certdict[certindx]["certstat"]["daystobt"],
-                                    daystodd=standard.certdict[certindx]["certstat"]["daystodd"],
-                                    certfile=standard.certdict[certindx]["path"],
-                                    issuauth=standard.certdict[certindx]["certstat"]["issuauth"],
-                                    serialno=standard.certdict[certindx]["certstat"]["serialno"],
-                                    assignee=standard.certdict[certindx]["user"],
-                                )
-                                if rtrnobjc[0]:
-                                    succqant += 1
-                                    logrdata.logrobjc.info(
-                                        f"[{certindx}] The notification ticket for renewing the "
-                                        + "TLS certificate has now been created"
-                                    )
-                                    standard.certdict[certindx]["notistat"]["done"] = rtrnobjc[0]
-                                    standard.certdict[certindx]["notistat"]["link"] = rtrnobjc[1]
-                                    standard.certdict[certindx]["notistat"]["time"] = rtrnobjc[2]
-                                    break
-            else:
-                bfstrtcn += 1
+    for certindx in standard.certdict:
+        totlqant += 1
+        if standard.certdict[certindx]["certstat"]["cstarted"]:
+            if standard.certdict[certindx]["certstat"]["cstopped"]:
+                afstopcn += 1
                 logrdata.logrobjc.warning(
-                    f"[{certindx}] The specified X.509 TLS certificate is not valid yet"
+                    f"[{certindx}] The specified X.509 TLS certificate is not valid anymore"
                 )
-        logrdata.logrobjc.info(
-            f"Of {totlqant} TLS certificate(s), {bfstrtcn} TLS certificate(s) were not valid "
-            + f"yet, {afstopcn} TLS certificate(s) were not valid anymore and {succqant} TLS "
-            + "certificate(s) were notified of being near their validity expiry"
-        )
-        with open(standard.hostloca, "w") as yamlfile:
-            yaml.safe_dump(standard.certdict, yamlfile)
-    elif standard.gitforge == "gitlab":
-        logrdata.logrobjc.error("The notification has not yet been implemented on GitLab")
-        sys.exit(1)
-    elif standard.gitforge == "github":
-        logrdata.logrobjc.error("The notification has not yet been implemented on GitHub")
-        sys.exit(1)
+            else:
+                if standard.certdict[certindx]["certstat"]["daystodd"] <= standard.daysqant:
+                    logrdata.logrobjc.warning(
+                        f"[{certindx}] The specified X.509 TLS certificate is about to expire "
+                        + f"in under {standard.daysqant} days from now"
+                    )
+                    if not standard.certdict[certindx]["notistat"]["done"]:
+                        for retcount in range(standard.maxretry):
+                            rtrnobjc = forgejo.makenote(
+                                retcount=retcount,
+                                servname=certindx,
+                                strtdate=standard.certdict[certindx]["certstat"]["strtdate"],
+                                stopdate=standard.certdict[certindx]["certstat"]["stopdate"],
+                                daystobt=standard.certdict[certindx]["certstat"]["daystobt"],
+                                daystodd=standard.certdict[certindx]["certstat"]["daystodd"],
+                                certfile=standard.certdict[certindx]["path"],
+                                issuauth=standard.certdict[certindx]["certstat"]["issuauth"],
+                                serialno=standard.certdict[certindx]["certstat"]["serialno"],
+                                assignee=standard.certdict[certindx]["user"],
+                            )
+                            if rtrnobjc[0]:
+                                succqant += 1
+                                logrdata.logrobjc.info(
+                                    f"[{certindx}] The notification ticket for renewing the "
+                                    + "TLS certificate has now been created"
+                                )
+                                standard.certdict[certindx]["notistat"]["done"] = rtrnobjc[0]
+                                standard.certdict[certindx]["notistat"]["link"] = rtrnobjc[1]
+                                standard.certdict[certindx]["notistat"]["time"] = rtrnobjc[2]
+                                break
+        else:
+            bfstrtcn += 1
+            logrdata.logrobjc.warning(
+                f"[{certindx}] The specified X.509 TLS certificate is not valid yet"
+            )
+    logrdata.logrobjc.info(
+        f"Of {totlqant} TLS certificate(s), {bfstrtcn} TLS certificate(s) were not valid "
+        + f"yet, {afstopcn} TLS certificate(s) were not valid anymore and {succqant} TLS "
+        + "certificate(s) were notified of being near their validity expiry"
+    )
+    with open(standard.hostloca, "w") as yamlfile:
+        yaml.safe_dump(standard.certdict, yamlfile)

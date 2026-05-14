@@ -44,11 +44,11 @@ def makenote(
             f"[{servname}] Notification request attempt count - {retcount+1} of {standard.maxretry}"
         )
         rqstobjc = post(
-            url=f"https://pagure.io/api/0/{standard.reponame}/new_issue",
+            url=f"{standard.repoloca}/api/v1/repos/{standard.reponame}/issues",
             headers={"Authorization": f"token {standard.password}"},
-            data={
+            json={
                 "title": issuhead.format(servname=servname, daysqant=standard.daysqant),
-                "issue_content": issubody.format(
+                "body": issubody.format(
                     servname=servname,
                     daysqant=standard.daysqant,
                     strtdate=strtdate,
@@ -59,8 +59,8 @@ def makenote(
                     issuauth=issuauth,
                     serialno=serialno,
                 ),
-                "tag": ",".join(standard.tagslist),
-                "assignee": assignee,
+                "assignees": [assignee] if assignee else [],
+                "labels": standard.tagslist,
             },
             timeout=standard.rqsttime,
         )
@@ -68,15 +68,15 @@ def makenote(
             f"[{servname}] The notification request was met with response code "
             + f"{rqstobjc.status_code}"
         )
-        if rqstobjc.status_code == 200:
+        if rqstobjc.status_code == 201:
             logrdata.logrobjc.debug(
                 f"[{servname}] The created notification ticket was created with ID "
-                + f"#{rqstobjc.json()['issue']['id']} ({rqstobjc.json()['issue']['full_url']})."
+                + f"#{rqstobjc.json()['id']} ({rqstobjc.json()['html_url']})."
             )
             return (
                 True,
-                rqstobjc.json()["issue"]["full_url"],
-                rqstobjc.json()["issue"]["date_created"],
+                rqstobjc.json()["html_url"],
+                rqstobjc.json()["created_at"],
             )
         else:
             return False, "", ""
