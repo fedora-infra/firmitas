@@ -1,6 +1,6 @@
 """
 Firmitas
-Copyright (C) 2023-2024 Akashdeep Dhar
+Copyright (C) 2023-2026 Akashdeep Dhar
 
 This program is free software: you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software
@@ -21,7 +21,12 @@ be used or replicated with the express permission of Red Hat, Inc.
 """
 
 
-from os import environ as envr
+import re
+
+FORGEJO_TEST_ISSUEURL = re.compile(r".*/api/v1/repos/.*/issues")
+FORGEJO_TEST_REPOPATH = "testowner/testrepo"
+FORGEJO_TEST_LOCATION = "https://forge.fedoraproject.org"
+
 
 standard_list = [
     "[INFO] Probing into the configured directory",
@@ -75,24 +80,10 @@ gen_edge_list = [
 ]
 
 
-def list_etoe_pagure(list_etoe: list = diff_insert_list + standard_list.copy()) -> list:  # noqa : B008
+def list_etoe_source(list_etoe: list = diff_insert_list + standard_list.copy()) -> list:  # noqa : B008
     list_etoe += [
         "[WARNING] [dtfedmsg.stg] The specified X.509 TLS certificate is not valid anymore",
         "[INFO] Of 7 TLS certificate(s), 1 TLS certificate(s) were not valid yet, 1 TLS certificate(s) were not valid anymore and 0 TLS certificate(s) were notified of being near their validity expiry",  # noqa : E501
-    ]
-    return list_etoe
-
-
-def list_etoe_gitlab(list_etoe: list = standard_list.copy()) -> list:  # noqa : B008
-    list_etoe += [
-        "[ERROR] The notification has not yet been implemented on GitLab"
-    ]
-    return list_etoe
-
-
-def list_etoe_github(list_etoe: list = standard_list.copy()) -> list:  # noqa : B008
-    list_etoe += [
-        "[ERROR] The notification has not yet been implemented on GitHub"
     ]
     return list_etoe
 
@@ -101,37 +92,27 @@ def list_etoe_auth(list_etoe: list = diff_insert_list + standard_list.copy()) ->
     list_etoe += [
         "[WARNING] [fedora-messaging.stg] The specified X.509 TLS certificate is about to expire in under",  # noqa : E501
         "[DEBUG] [fedora-messaging.stg] Notification request attempt count - 1 of 5",
-        "[DEBUG] Starting new HTTPS connection (1): pagure.io:443",
-        f"[DEBUG] https://pagure.io:443 \"POST /api/0/{envr['FIRMITAS_TEST_REPONAME']}/new_issue HTTP/",  # noqa : E501
-        "[DEBUG] [fedora-messaging.stg] The notification request was met with response code 200",
+        "[DEBUG] [fedora-messaging.stg] The notification request was met with response code 201",
         "[DEBUG] [fedora-messaging.stg] The created notification ticket was created with ID",
         "[INFO] [fedora-messaging.stg] The notification ticket for renewing the TLS certificate has now been created",  # noqa : E501
         "[WARNING] [joystick.stg] The specified X.509 TLS certificate is about to expire in under",  # noqa : E501
         "[DEBUG] [joystick.stg] Notification request attempt count - 1 of 5",
-        "[DEBUG] Starting new HTTPS connection (1): pagure.io:443",
-        f"[DEBUG] https://pagure.io:443 \"POST /api/0/{envr['FIRMITAS_TEST_REPONAME']}/new_issue HTTP/",  # noqa : E501
-        "[DEBUG] [joystick.stg] The notification request was met with response code 200",
+        "[DEBUG] [joystick.stg] The notification request was met with response code 201",
         "[DEBUG] [joystick.stg] The created notification ticket was created with ID",
         "[INFO] [joystick.stg] The notification ticket for renewing the TLS certificate has now been created",  # noqa : E501
         "[WARNING] [nuancier.stg] The specified X.509 TLS certificate is about to expire in under",  # noqa : E501
         "[DEBUG] [nuancier.stg] Notification request attempt count - 1 of 5",
-        "[DEBUG] Starting new HTTPS connection (1): pagure.io:443",
-        f"[DEBUG] https://pagure.io:443 \"POST /api/0/{envr['FIRMITAS_TEST_REPONAME']}/new_issue HTTP/",  # noqa : E501
-        "[DEBUG] [nuancier.stg] The notification request was met with response code 200",
+        "[DEBUG] [nuancier.stg] The notification request was met with response code 201",
         "[DEBUG] [nuancier.stg] The created notification ticket was created with ID",
         "[INFO] [nuancier.stg] The notification ticket for renewing the TLS certificate has now been created",  # noqa : E501
         "[WARNING] [robosign.stg] The specified X.509 TLS certificate is about to expire in under",  # noqa : E501
         "[DEBUG] [robosign.stg] Notification request attempt count - 1 of 5",
-        "[DEBUG] Starting new HTTPS connection (1): pagure.io:443",
-        f"[DEBUG] https://pagure.io:443 \"POST /api/0/{envr['FIRMITAS_TEST_REPONAME']}/new_issue HTTP/",  # noqa : E501
-        "[DEBUG] [robosign.stg] The notification request was met with response code 200",
+        "[DEBUG] [robosign.stg] The notification request was met with response code 201",
         "[DEBUG] [robosign.stg] The created notification ticket was created with ID",
         "[INFO] [robosign.stg] The notification ticket for renewing the TLS certificate has now been created",  # noqa : E501
         "[WARNING] [waiverdb.stg] The specified X.509 TLS certificate is about to expire in under",  # noqa : E501
         "[DEBUG] [waiverdb.stg] Notification request attempt count - 1 of 5",
-        "[DEBUG] Starting new HTTPS connection (1): pagure.io:443",
-        f"[DEBUG] https://pagure.io:443 \"POST /api/0/{envr['FIRMITAS_TEST_REPONAME']}/new_issue HTTP/",  # noqa : E501
-        "[DEBUG] [waiverdb.stg] The notification request was met with response code 200",
+        "[DEBUG] [waiverdb.stg] The notification request was met with response code 201",
         "[DEBUG] [waiverdb.stg] The created notification ticket was created with ID",
         "[INFO] [waiverdb.stg] The notification ticket for renewing the TLS certificate has now been created",  # noqa : E501
         "[INFO] Of 7 TLS certificate(s), 1 TLS certificate(s) were not valid yet, 1 TLS certificate(s) were not valid anymore and 5 TLS certificate(s) were notified of being near their validity expiry",  # noqa : E501
@@ -167,8 +148,6 @@ def list_etoe_nope(list_etoe: list = diff_insert_list + standard_list.copy()) ->
         "[DEBUG] [fedora-messaging.stg] Notification request attempt count - 3 of 5",
         "[DEBUG] [fedora-messaging.stg] Notification request attempt count - 4 of 5",
         "[DEBUG] [fedora-messaging.stg] Notification request attempt count - 5 of 5",
-        "[DEBUG] Starting new HTTPS connection (1): pagure.io:443",
-        f"[DEBUG] https://pagure.io:443 \"POST /api/0/{envr['FIRMITAS_TEST_REPONAME']}/new_issue HTTP/",  # noqa : E501
         "[DEBUG] [joystick.stg] The notification request was met with response code 401",
         "[DEBUG] [nuancier.stg] The notification request was met with response code 401",
         "[DEBUG] [robosign.stg] The notification request was met with response code 401",
