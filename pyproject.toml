@@ -1,16 +1,18 @@
-[tool.poetry]
+[project]
 name = "firmitas"
-version = "0.1.5a0"
+version = "0.1.5a1"
 description = "Simple notification service for X.509-standard TLS certificate statuses"
-authors = ["Akashdeep Dhar <akashdeep.dhar@gmail.com>"]
+authors = [
+    {name = "Akashdeep Dhar", email = "akashdeep.dhar@gmail.com"}
+]
+maintainers = [
+    {name = "Akashdeep Dhar", email = "akashdeep.dhar@gmail.com"}
+]
 license = "GPL-3.0-or-later"
-maintainers = ["Akashdeep Dhar <akashdeep.dhar@gmail.com>"]
 readme = "README.md"
-homepage = "https://gitlab.com/t0xic0der/firmitas/"
-repository = "https://gitlab.com/t0xic0der/firmitas/"
-documentation = "https://gitlab.com/t0xic0der/firmitas/-/blob/main/README.md"
+requires-python = ">=3.8"
 keywords = ["notification", "security", "certificate"]
-classifiers= [
+classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
     "Intended Audience :: System Administrators",
@@ -24,21 +26,34 @@ classifiers= [
     "Topic :: System :: Networking",
     "Topic :: System :: Networking :: Monitoring",
 ]
+dependencies = [
+    "click>=8.0.0,<9",
+    "cryptography>=36.0.0",
+    "pyyaml>=5.0.0,<7",
+    "requests>=2.20.0,<3",
+]
 
-[tool.poetry.dependencies]
-python = ">=3.8,<4"
-click = ">=8.0.0,<9"
-cryptography = ">=36.0.0"
-pyyaml = ">=5.0.0,<7"
-requests = ">=2.20.0,<3"
+[project.urls]
+Homepage = "https://gitlab.com/t0xic0der/firmitas/"
+Repository = "https://gitlab.com/t0xic0der/firmitas/"
+Documentation = "https://gitlab.com/t0xic0der/firmitas/-/blob/main/README.md"
 
-[tool.poetry.group.dev.dependencies]
-pytest = "^7.1.3 || ^8.0.0 || ^9.0.0"
-pytest-cov = "^4.1.0 || ^5.0.0 || ^6.0.0 || ^7.0.0"
-ruff = "^0.2.0 || ^0.3.0 || ^0.5.0 || ^0.6.0 || ^0.7.0 || ^0.8.0 || ^0.9.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^0.14.0"
-tox = "^4.0.0"
-responses = "^0.25.0"
-pytest-mock = "^3.14.1"
+[project.scripts]
+firmitas = "firmitas.main:main"
+
+[dependency-groups]
+dev = [
+    "pytest>=7.1.3",
+    "pytest-cov>=4.1.0",
+    "pytest-mock>=3.14.1",
+    "responses>=0.25.0",
+    "ruff>=0.2.0",
+    "tox>=4.0.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [tool.ruff]
 line-length = 100
@@ -46,10 +61,3 @@ fix = true
 
 [tool.ruff.lint]
 select = ["E", "F", "W", "I", "S", "B", "UP"]
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
-
-[tool.poetry.scripts]
-firmitas = "firmitas.main:main"

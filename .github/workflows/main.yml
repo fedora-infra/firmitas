@@ -12,11 +12,7 @@ jobs:
 
       - name: Install the base dependencies
         run: |
-             python3 -m pip install --upgrade poetry tox
-
-      - name: Check the correctness of the project config
-        run: |
-           poetry check
+             python3 -m pip install --upgrade uv tox
 
       - name: Check the quality of the code
         run: |
@@ -35,7 +31,7 @@ jobs:
       - name: Install the base dependencies
         run: |
              dnf install -y libffi-devel
-             python3 -m pip install --upgrade tox
+             python3 -m pip install --upgrade uv tox
 
       - name: Set up user for running the testcases
         run: |
