@@ -1,6 +1,6 @@
 """
 Firmitas
-Copyright (C) 2023-2024 Akashdeep Dhar
+Copyright (C) 2023-2026 Akashdeep Dhar
 
 This program is free software: you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software
@@ -27,26 +27,23 @@ Variables related to notifications
 # The limit for how long a single request must be attempted for
 rqsttime = 30
 
-# The source code forge on which the issue tickets need to be created
-gitforge = "pagure"
-
-# The location of the ticketing repository
+# The URL of the Forgejo instance
 repoloca = ""
 
-# The name of the ticketing repository with namespace
+# The repository path in owner/repo format
 reponame = ""
 
-# The username to masquerade as in order to create notification tickets
+# The username to masquerade as to create notifying issue tickets
 username = ""
 
-# The API key for the source code forge pertaining to the user
+# The API key for the Forgejo instance pertaining to the username
 password = ""
 
 # Number of days from validity expiry to make the notification for
 daysqant = 30
 
-# List of labels to tag the notification tickets with
-tagslist = ["firmitas", "automate", "notifier"]
+# List of integer label IDs to tag the notification tickets with
+tagslist = []
 
 # Maximum number of retries to opening the notification ticket
 maxretry = 5

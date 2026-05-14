@@ -1,6 +1,6 @@
 """
 Firmitas
-Copyright (C) 2023-2024 Akashdeep Dhar
+Copyright (C) 2023-2026 Akashdeep Dhar
 
 This program is free software: you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software
@@ -67,24 +67,6 @@ def locate_config() -> str:
     return f"{workable_config_location}/myconfig.py"
 
 
-def locate_config_gitforge() -> str:
-    """
-    Make specific changes to the standard configuration file to invoke a certain condition
-
-    POSITION - Set a disallowed Git Forge type as the value for the Git Forge variable
-    EXPECTED - Exception related to the allowed and disallowed Git Forge types
-    """
-
-    workable_config_location = locate_config()
-    with open(workable_config_location) as myconfig_config_file:
-        myconfig_config_data = myconfig_config_file.read()
-    with open(workable_config_location, "w") as myconfig_config_file:
-        myconfig_config_file.write(
-            myconfig_config_data.replace("gitforge = \"pagure\"", "gitforge = \"gogs\"")
-        )
-    return workable_config_location
-
-
 def locate_config_strgdate() -> str:
     """
     Make specific changes to the standard configuration file to invoke a certain condition
@@ -117,6 +99,24 @@ def locate_config_negative() -> str:
     with open(workable_config_location, "w") as myconfig_config_file:
         myconfig_config_file.write(
             myconfig_config_data.replace("daysqant = 30", "daysqant = -30")
+        )
+    return workable_config_location
+
+
+def locate_config_tagslist() -> str:
+    """
+    Make specific changes to the standard configuration file to invoke a certain condition
+
+    POSITION - Set a string value in the tagslist variable
+    EXPECTED - Exception related to the data types allowed for the tagslist variable
+    """
+
+    workable_config_location = locate_config()
+    with open(workable_config_location) as myconfig_config_file:
+        myconfig_config_data = myconfig_config_file.read()
+    with open(workable_config_location, "w") as myconfig_config_file:
+        myconfig_config_file.write(
+            myconfig_config_data.replace("tagslist = []", "tagslist = [\"firmitas\"]")
         )
     return workable_config_location
 
@@ -181,15 +181,6 @@ def locate_config_hostname() -> str:
             id="Configuration - Standard",
         ),
         pytest.param(
-            f"--conffile {locate_config_gitforge()}",
-            1,
-            [
-                "[ERROR] The specified ticketing repository",
-                "forge is not yet supported",
-            ],
-            id="Configuration - Invalid ticketing repository",
-        ),
-        pytest.param(
             f"--conffile {locate_config_strgdate()}",
             1,
             [
@@ -206,6 +197,15 @@ def locate_config_hostname() -> str:
                 "a non-zero positive integer value",
             ],
             id="Configuration - Negative integer",
+        ),
+        pytest.param(
+            f"--conffile {locate_config_tagslist()}",
+            1,
+            [
+                "[ERROR] The variable 'tagslist' must contain",
+                "integer label IDs only",
+            ],
+            id="Configuration - Invalid tagslist",
         ),
         pytest.param(
             f"--conffile {locate_config_location()}",

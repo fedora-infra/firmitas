@@ -36,22 +36,18 @@ __vers__ = metadata.version("firmitas")
 
 
 def readconf(confobjc):
-    standard.gitforge = confobjc.get("gitforge", standard.gitforge)
-    standard.repoloca = confobjc.get("repoloca", standard.repoloca)
+    standard.repoloca = confobjc.get("repoloca", standard.repoloca).rstrip("/")
     standard.reponame = confobjc.get("reponame", standard.reponame)
     standard.username = confobjc.get("username", standard.username)
     standard.password = confobjc.get("password", standard.password)
     standard.daysqant = confobjc.get("daysqant", standard.daysqant)
+    standard.tagslist = confobjc.get("tagslist", standard.tagslist)
     standard.maxretry = confobjc.get("maxretry", standard.maxretry)
     standard.certloca = confobjc.get("certloca", standard.certloca)
     standard.hostloca = confobjc.get("hostloca", standard.hostloca)
 
     dictConfig(standard.logrconf)
     logrdata.logrobjc = getLogger(__name__)
-
-    if standard.gitforge not in ["pagure", "github", "gitlab"]:
-        logrdata.logrobjc.error("The specified ticketing repository forge is not yet supported")
-        sys.exit(1)
 
     if not isinstance(standard.daysqant, int):
         logrdata.logrobjc.error(
@@ -64,6 +60,12 @@ def readconf(confobjc):
                 "The variable 'daysqant' must have a non-zero positive integer value"
             )
             sys.exit(1)
+
+    if not all(isinstance(t, int) for t in standard.tagslist):
+        logrdata.logrobjc.error(
+            "The variable 'tagslist' must contain integer label IDs only"
+        )
+        sys.exit(1)
 
     if not os.path.exists(standard.certloca):
         logrdata.logrobjc.error(

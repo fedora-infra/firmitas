@@ -1,6 +1,6 @@
 """
 Firmitas
-Copyright (C) 2023-2024 Akashdeep Dhar
+Copyright (C) 2023-2026 Akashdeep Dhar
 
 This program is free software: you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software
@@ -21,30 +21,31 @@ be used or replicated with the express permission of Red Hat, Inc.
 """
 
 
-from os import environ as envr
 from os import makedirs, path, remove
 from pathlib import Path
 from secrets import token_hex
 from shutil import copyfile, rmtree
 
 import pytest
+import responses
 from click.testing import CliRunner
 from cryptography import x509
 from pytest_mock import MockerFixture
 
 from firmitas.main import main
 from test import (
+    FORGEJO_TEST_ISSUEURL,
+    FORGEJO_TEST_LOCATION,
+    FORGEJO_TEST_REPOPATH,
     list_etoe_auth,
     list_etoe_generate,
     list_etoe_generate_edge,
-    list_etoe_github,
-    list_etoe_gitlab,
     list_etoe_nope,
-    list_etoe_pagure,
+    list_etoe_source,
 )
 
 
-def locate_config(gitforge: str = "pagure") -> str:
+def locate_config() -> str:
     """
     Create a makeshift configuration file for specific testing purposes
     """
@@ -86,8 +87,6 @@ def locate_config(gitforge: str = "pagure") -> str:
         ).replace(
             "/var/tmp/firmitas/certlist.yml",  # noqa : S108
             test_certlist_location
-        ).replace(
-            "gitforge = \"pagure\"", f"gitforge = \"{gitforge}\""
         )
     with open(test_standard_location, "w") as test_standard_file:
         test_standard_file.write(test_standard_data)
@@ -105,7 +104,7 @@ def locate_config(gitforge: str = "pagure") -> str:
     return test_standard_location
 
 
-def locate_config_with_simulate_coming_expiry(daysqant: int = 2000, password: str = envr["FIRMITAS_TEST_PASSWORD"]) -> str:  # noqa : E501
+def locate_config_with_simulate_coming_expiry(daysqant: int = 2000, password: str = "dummytoken") -> str:  # noqa : E501, S107
     """
     Make specific changes to the standard configuration file to invoke a certain condition
     """
@@ -115,11 +114,13 @@ def locate_config_with_simulate_coming_expiry(daysqant: int = 2000, password: st
         test_standard_data = test_standard_file.read().replace(
             "daysqant = 30", f"daysqant = {daysqant}"
         ).replace(
-            "username = \"\"", f"username = \"{envr['FIRMITAS_TEST_USERNAME']}\""
+            "username = \"\"", "username = \"testuser\""
         ).replace(
             "password = \"\"", f"password = \"{password}\""
         ).replace(
-            "reponame = \"\"", f"reponame = \"{envr['FIRMITAS_TEST_REPONAME']}\""
+            "reponame = \"\"", f"reponame = \"{FORGEJO_TEST_REPOPATH}\""
+        ).replace(
+            "repoloca = \"\"", f"repoloca = \"{FORGEJO_TEST_LOCATION}\""
         )
     with open(test_standard_location, "w") as test_standard_file:
         test_standard_file.write(test_standard_data)
@@ -137,39 +138,14 @@ def locate_config_with_simulate_no_certlist() -> str:
     return test_standard_location
 
 
-@pytest.mark.vcr(filter_headers=["Authorization"])
 @pytest.mark.parametrize(
     "cmdl, code, text",
     [
         pytest.param(
             f"--conffile {locate_config()}",
             0,
-            list_etoe_pagure(),
-            id = "Standard and mistaken certificates - Pagure",
-        ),
-        pytest.param(
-            f"--conffile {locate_config('gitlab')}",
-            1,
-            list_etoe_gitlab(),
-            id="Standard and mistaken certificates - GitLab",
-        ),
-        pytest.param(
-            f"--conffile {locate_config('github')}",
-            1,
-            list_etoe_github(),
-            id="Standard and mistaken certificates - GitHub",
-        ),
-        pytest.param(
-            f"--conffile {locate_config_with_simulate_coming_expiry()}",
-            0,
-            list_etoe_auth(),
-            id="Invoke notifications with accurate password",
-        ),
-        pytest.param(
-            f"--conffile {locate_config_with_simulate_coming_expiry(password='MISTAKEN')}",  # noqa : S106
-            0,
-            list_etoe_nope(),
-            id="Invoke notifications with mistaken password",
+            list_etoe_source(),
+            id = "Standard and mistaken certificates - Forgejo",
         ),
         pytest.param(
             f"--conffile {locate_config_with_simulate_no_certlist()}",
@@ -189,7 +165,46 @@ def test_etoe(cmdl, code, text) -> None:
     rmtree(folder_location)
 
 
-@pytest.mark.vcr(filter_headers=["Authorization"])
+@responses.activate
+def test_etoe_auth_success() -> None:
+    responses.add(
+        responses.POST,
+        FORGEJO_TEST_ISSUEURL,
+        json={
+            "id": 1,
+            "html_url": f"{FORGEJO_TEST_LOCATION}/{FORGEJO_TEST_REPOPATH}/issues/1",
+            "created_at": "2024-01-01T00:00:00Z",
+        },
+        status=201,
+    )
+    cmdl = f"--conffile {locate_config_with_simulate_coming_expiry()}"
+    runner = CliRunner()
+    result = runner.invoke(main, cmdl)
+    assert result.exit_code == 0  # noqa: S101
+    for indx in list_etoe_auth():
+        assert indx in result.output  # noqa: S101
+    folder_location = cmdl.split(" ")[1].replace("/myconfig.py", "")
+    rmtree(folder_location)
+
+
+@responses.activate
+def test_etoe_auth_failure() -> None:
+    responses.add(
+        responses.POST,
+        FORGEJO_TEST_ISSUEURL,
+        json={"message": "Unauthorized"},
+        status=401,
+    )
+    cmdl = f"--conffile {locate_config_with_simulate_coming_expiry(password='MISTAKEN')}"  # noqa : S106
+    runner = CliRunner()
+    result = runner.invoke(main, cmdl)
+    assert result.exit_code == 0  # noqa: S101
+    for indx in list_etoe_nope():
+        assert indx in result.output  # noqa: S101
+    folder_location = cmdl.split(" ")[1].replace("/myconfig.py", "")
+    rmtree(folder_location)
+
+
 @pytest.mark.parametrize(
     "cmdl, code, text",
     [
@@ -217,7 +232,6 @@ def test_etoe_invalid_cert(cmdl, code, text, mocker: MockerFixture) -> None:
     rmtree(folder_location)
 
 
-@pytest.mark.vcr(filter_headers=["Authorization"])
 @pytest.mark.parametrize(
     "cmdl, code, text",
     [
